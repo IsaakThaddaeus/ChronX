@@ -33,38 +33,10 @@ public class Arbeiter {
 		public double gleitzeitWarngrenze;
 
 		@JsonProperty
-		public List<String> zeitarbeitsTag= new ArrayList<>();
+		List<List<String>> zeitarbeitsTag = new ArrayList<List<String>>(30);
 
 		@JsonProperty
 		public double[] monatsZeit =new double[12];
 	}
 
 }
-//		@JsonProperty("class")
-//		public String clazz;
-//
-//		@JsonProperty
-//		public String threadName;
-//
-//		@JsonProperty
-//		public Mdc mdc;
-//
-//		public class Mdc {
-//
-//			@JsonProperty("TRACE_ID")
-//			public String traceId;
-//		}
-//
-//		@JsonProperty
-//		public Exception exception;
-//
-//		public class Exception {
-//			@JsonProperty
-//			public String stacktrace;
-//
-//			@JsonProperty
-//			public String exception_class;
-//
-//			@JsonProperty
-//			public String exception_message;
-//		}
