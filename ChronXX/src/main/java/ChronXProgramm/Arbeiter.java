@@ -6,19 +6,19 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Arbeiter {
-	@JsonProperty("@email")
+	@JsonProperty
 	public String email;
 
-	@JsonProperty("@passwort")
+	@JsonProperty
 	public String passwort;
 
-	@JsonProperty("@leitenderAngestellter")
+	@JsonProperty
 	public boolean leitenderAngestellter;
 
-	@JsonProperty("@sprache")
+	@JsonProperty
 	public boolean sprache;
 
-	@JsonProperty("@Zeit")
+	@JsonProperty
 	public Zeit zeit;
 
 	public class Zeit {
@@ -40,3 +40,4 @@ public class Arbeiter {
 	}
 
 }
+
