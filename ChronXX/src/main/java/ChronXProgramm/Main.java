@@ -13,6 +13,8 @@ import java.util.Set;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import ChronXProgramm.Arbeiter.Zeit;
+
 public class Main {
 	static final String dateiPfadHardCoded = "src/main/resources/jsonfiles";
 
@@ -35,13 +37,13 @@ public class Main {
 			 LocalDateTime date = LocalDateTime.now();
 				String aktuelleZeit = date.getYear()+"."+date.getMonthValue()+"."+date.getDayOfMonth()+"-"+date.getHour()+":"+date.getMinute();
 				 System.out.println(aktuelleZeit);
-				 eintrag.zeit.zeitarbeitsTag.add(aktuelleZeit);
+				 eintrag.zeit.zeitarbeitsTag.get(1).add(aktuelleZeit);
 				 if(	 eintrag.zeit.zeitarbeitsTag.size()%2==0) {
 						System.out.println("Passender Arbeitsabschnitt: "+eintrag.zeit.zeitarbeitsTag.size());
 					}
-					 if( eintrag.zeit.zeitarbeitsTag.size()>=4) {
+					 if( eintrag.zeit.zeitarbeitsTag.get(0).size()>=4) {
 						 System.out.println("Davor"+eintrag.zeit.zeitarbeitsTag.size());
-						 eintrag.zeit.zeitarbeitsTag.removeAll(eintrag.zeit.zeitarbeitsTag);
+						 eintrag.zeit.zeitarbeitsTag.get(0).removeAll(eintrag.zeit.zeitarbeitsTag.get(0));
 						 System.out.println("Danach"+eintrag.zeit.zeitarbeitsTag.size());
 					 }
 			System.out.println("**NeuerEintragsAnfang**" + "\n" + "Email:" + eintrag.email + "\nPasswort:" + eintrag.passwort
@@ -56,12 +58,11 @@ public class Main {
 	}
 
 	public static void bearbeite(List<Arbeiter> zubearbeitendeDatei) {
-//		List<Arbeiter> b = new ArrayList<>();
 		System.out.println("**********");
 		for (Arbeiter eintrag : zubearbeitendeDatei) {
 			System.out.println(eintrag.email + " " + eintrag.zeit.aktuelleGleitzeit);
 
-			if (eintrag.email.contains("jan.holzhausen@bbqgmbh.de")) { // Später hier benutzername abfragen
+			if (eintrag.email.contains("jan.holzhausen@bbqgmbh.de")) { // SpÃ¤ter hier benutzername abfragen
 				eintrag.zeit.aktuelleGleitzeit += 4; // test
 //				eintrag.zeit.zeitarbeitsTag
 			}
