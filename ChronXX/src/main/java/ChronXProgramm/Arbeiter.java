@@ -33,7 +33,7 @@ public class Arbeiter {
 		public double gleitzeitWarngrenze;
 
 		@JsonProperty
-		List<List<String>> zeitarbeitsTag = new ArrayList<List<String>>(30);
+		List<List<String>> zeitarbeitsTag = new ArrayList<List<String>>();
 
 		@JsonProperty
 		public double[] monatsZeit =new double[12];
