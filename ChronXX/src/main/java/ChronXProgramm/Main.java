@@ -74,7 +74,7 @@ public class Main {
 	public static void drucker(List<Arbeiter> zudruckendeDatei) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			mapper.writeValue(new File("src/main/resources/jsonfiles/Daten.json"), zudruckendeDatei);
+			mapper.writeValue(new File(dateiPfadHardCoded+"/Daten.json"), zudruckendeDatei);
 
 		} catch (IOException e) {
 			e.printStackTrace();
