@@ -3,14 +3,14 @@
   <groupId>YoungDynamics </groupId>
   <artifactId>ChronXX</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+
      <properties>
            <jackson.version>2.12.4</jackson.version>
          <maven.compiler.source>1.8</maven.compiler.source>
          <maven.compiler.target>1.8</maven.compiler.target>
            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
      </properties>
-
-	<dependencies>
+     <dependencies>
            <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-core</artifactId>
@@ -38,7 +38,7 @@
                            <archive>
                                  <manifest>
                                       <addClasspath>true</addClasspath>
-                                      <mainClass>jasonparser.Main</mainClass>
+                                      <mainClass>ChronXProgramm.Main</mainClass>
                                  </manifest>
                            </archive>
                            <descriptorRefs>
@@ -65,7 +65,7 @@
                                       </descriptorRefs>
                                       <archive>
                                             <manifest>
-                                                 <mainClass>jasonparser.Main</mainClass>
+                                                 <mainClass>ChronXProgramm.Main</mainClass>
                                            </manifest>
                                       </archive>
                                  </configuration>
@@ -75,5 +75,6 @@
            </plugins>
      </build>
 </project>
+
 
 

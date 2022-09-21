@@ -2,32 +2,22 @@ package ChronXProgramm;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import ChronXProgramm.Arbeiter.Zeit;
 
 public class Main {
-	static final String dateiPfadHardCoded = "src/main/resources/jsonfiles";
-
+	private static final String dateiPfadHardCoded = "src/main/resources/jsonfiles";
+	
 	public static void main(String[] args) throws IOException {
-		
-		Parser parser = new Parser();
-		Set<File> rohDatei = parser.leseDateiAusOrdner(new File(dateiPfadHardCoded));
-		Iterator<File> iteratorDerRohDatei = rohDatei.iterator();
-		File datei = iteratorDerRohDatei.next();
-		List<Arbeiter> gemappteDatei = parser.jsonDateiMappen(datei);
-		
-		konsolenausgabe(gemappteDatei);
-		bearbeite(gemappteDatei);
+		EinlesenUndSpeichern parser = new EinlesenUndSpeichern(dateiPfadHardCoded);
+		Arbeiter test =parser.zuordnungDesEingeloggtenArbeiters("jan.Holzhausen@bbqgmbh.de","123qwertz");
+		parser.abspeichernVonAenderungen(test);
+
 
 	}
 
@@ -47,7 +37,7 @@ public class Main {
 						 System.out.println("Danach"+eintrag.zeit.zeitarbeitsTag.size());
 					 }
 			System.out.println("**NeuerEintragsAnfang**" + "\n" + "Email:" + eintrag.email + "\nPasswort:" + eintrag.passwort
-					+ "\nLeitenderAngestellter:" + eintrag.leitenderAngestellter + "\nSprache:" + eintrag.sprache
+					+ "\nLeitenderAngestellter:" + eintrag.artDesAngestellten + "\nSprache:" + eintrag.sprache
 					+ "\nAktuelle Gleitzeit:" + eintrag.zeit.aktuelleGleitzeit + "\nWochenstunden:"
 					+ eintrag.zeit.wochenstunden + "\nGleitzeit Warngrenze:" + eintrag.zeit.gleitzeitWarngrenze
 					+ "\nZeit Arbeitstag:" + eintrag.zeit.zeitarbeitsTag + "\nMonatszeit:" + eintrag.zeit.monatsZeit[0]+"\n");
@@ -62,7 +52,7 @@ public class Main {
 		for (Arbeiter eintrag : zubearbeitendeDatei) {
 			System.out.println(eintrag.email + " " + eintrag.zeit.aktuelleGleitzeit);
 
-			if (eintrag.email.contains("jan.holzhausen@bbqgmbh.de")) { // Sp√§ter hier benutzername abfragen
+			if (eintrag.email.contains("jan.holzhausen@bbqgmbh.de")) { // Sp‰ter hier benutzername abfragen
 				eintrag.zeit.aktuelleGleitzeit += 4; // test
 //				eintrag.zeit.zeitarbeitsTag
 			}

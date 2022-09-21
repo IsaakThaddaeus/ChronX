@@ -12,8 +12,8 @@ public class Arbeiter {
 	@JsonProperty
 	public String passwort;
 
-	@JsonProperty
-	public boolean leitenderAngestellter;
+	@JsonProperty 
+	public int artDesAngestellten;
 
 	@JsonProperty
 	public boolean sprache;
