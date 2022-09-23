@@ -12,10 +12,10 @@ public class Main {
 		ZeitRechner zr = new ZeitRechner();
 		//zr.aktuellenTagZeitHinzufuegen(test);//fügt bei jeder ausführung die aktuelleUhrzeit als NEUEN Tag hinzu. Solltest du wahrscheinlich auskommentiert lassen
 		//zr.zeitDesTagesBerechnen(test, 1); //macht noch nichts
-		//zr.aktuellenTagInDatenBankAnlegen(test); //ignorieren ist noch in arbeit
+		//zr.aktuellenTagInDatenBankAnlegen(test); //ignorieren ist noch in arbeit 
 		test.zeit.zeitarbeitsTag.get(0).get(0).add(zr.aktuelleZeit());
 		parser.abspeichernVonAenderungen(test); //speichert den aktuellen Stand ab
-		konsolenausgabe(test); //gibt dir alle Infos für den Arbeiter und alle seine Arbeitstage
+//		konsolenausgabe(test); //gibt dir alle Infos für den Arbeiter und alle seine Arbeitstage
 		
 	}
 

@@ -35,30 +35,26 @@ public class ZeitRechner {
 		return aktuellerArbeiter;
 	}
 
-	public Arbeiter aktuellenTagInDatenBankAnlegen(Arbeiter arbeiter) { //ignorieren ist noch in arbeit und voller Fehler ^^ beschäftige dich aber nicht damit!!
-		LocalDateTime aktuellerTag = aktuelleZeit().plusDays(-15);
+	public Arbeiter aktuellenTagInDatenBankAnlegen(Arbeiter arbeiter) { //ignorieren ist noch in arbeit!!
+		LocalDateTime aktuellerTag = aktuelleZeit().plusDays(6);
 		arbeiter.zeit.zeitarbeitsTag.size();
-		int letztesJahr =arbeiter.zeit.zeitarbeitsTag.size()-1;
-		int letzterMonat =arbeiter.zeit.zeitarbeitsTag.get(arbeiter.zeit.zeitarbeitsTag.size()-1).size()-1;
-		int letzterTag = arbeiter.zeit.zeitarbeitsTag.get(arbeiter.zeit.zeitarbeitsTag.size()-1).get(arbeiter.zeit.zeitarbeitsTag.get(arbeiter.zeit.zeitarbeitsTag.size()-1).size()-1).size()-1;
-//		System.out.println("Jahr:" + letztesJahr + " Monat:" + letzterMonat + " Tag:" + letzterTag);
-//	System.out.println(arbeiter.zeit.zeitarbeitsTag.get(letztesJahr).get(letzterMonat).get(letzterTag));
-	LocalDateTime letzterEingetragenerTag = arbeiter.zeit.zeitarbeitsTag.get(letztesJahr).get(letzterMonat).get(letzterTag);
-	int unterschiedJahr = aktuellerTag.getYear()-letzterEingetragenerTag.getYear();
+		int letzterMonat =arbeiter.zeit.zeitarbeitsTag.size()-1;
+		int letzterTag =arbeiter.zeit.zeitarbeitsTag.get(arbeiter.zeit.zeitarbeitsTag.size()-1).size()-1;
+		int letzterZeiteintrag = arbeiter.zeit.zeitarbeitsTag.get(arbeiter.zeit.zeitarbeitsTag.size()-1).get(arbeiter.zeit.zeitarbeitsTag.get(arbeiter.zeit.zeitarbeitsTag.size()-1).size()-1).size()-1;
+	LocalDateTime letzterEingetragenerTag = arbeiter.zeit.zeitarbeitsTag.get(letzterMonat).get(letzterTag).get(letzterZeiteintrag);
 	int unterschiedMonat = aktuellerTag.getMonthValue()-letzterEingetragenerTag.getMonthValue();
 	int unterschiedTag = aktuellerTag.getDayOfMonth()-letzterEingetragenerTag.getDayOfMonth();
-//	System.out.println("UnterschiedJahr: "+unterschiedJahr+" UnterschiedMonat: "+unterschiedMonat+" UnterschiedTag: "+unterschiedTag);
 	 LocalDate datum = LocalDate.of(letzterEingetragenerTag.getYear(), letzterEingetragenerTag.getMonthValue(), letzterEingetragenerTag.getDayOfMonth());
-	 
-	 for(int i=0;i<unterschiedMonat;i++) {
-		 int w=  anzahlTageImMonat(datum)- letzterEingetragenerTag.getDayOfMonth();
-//		 System.out.println(w);
-		 for(int k=0;k<=w;k++) {
-			 arbeiter.zeit.zeitarbeitsTag.get(arbeiter.zeit.zeitarbeitsTag.size()-1).get(arbeiter.zeit.zeitarbeitsTag.get(arbeiter.zeit.zeitarbeitsTag.size()-1).size()-1).add(null);
-		 }
-		 arbeiter.zeit.zeitarbeitsTag.get(arbeiter.zeit.zeitarbeitsTag.size()-1).add(monatsZuschreiber(aktuellerTag.getDayOfMonth()));
+	 if(unterschiedTag>0) {
+		for(int i=1; i<unterschiedTag; i++) {
+			for(int k=0; k<arbeiter.zeit.urlaubsUndKrankheitsTage.size(); k++) {
+				if(arbeiter.zeit.urlaubsUndKrankheitsTage.get(k).equals(datum.plusDays(i))) {
+					arbeiter.zeit.zeitarbeitsTag.get(letzterMonat).add(new ArrayList<LocalDateTime>());
+					arbeiter.zeit.zeitarbeitsTag.get(letzterMonat).get(letzterTag+i).add(LocalDateTime.of(datum.getYear(), datum.getMonthValue(), datum.plusDays(i).getDayOfMonth(), 0, 0));
+				}
+			}
+		}
 	 }
-	
 		return arbeiter;
 	}
 	public List<LocalDateTime> monatsZuschreiber(int monatAnzahlTage){ //ignorieren ist noch in arbeit
