@@ -1,83 +1,44 @@
 package ChronXProgramm;
 
-import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Main {
-	static final String dateiPfadHardCoded = "src/main/resources/jsonfiles";
-
+	private static final String dateiPfadHardCoded = "src/main/resources/jsonfiles";
+//Kannst hier ändern was du willst
 	public static void main(String[] args) throws IOException {
+		EinlesenUndSpeichern parser = new EinlesenUndSpeichern(dateiPfadHardCoded);
+		Arbeiter test = parser.zuordnungDesEingeloggtenArbeiters("justin.schick@bbqgmbh.de", "qwertz123");
 		
-		Parser parser = new Parser();
-		Set<File> rohDatei = parser.leseDateiAusOrdner(new File(dateiPfadHardCoded));
-		Iterator<File> iteratorDerRohDatei = rohDatei.iterator();
-		File datei = iteratorDerRohDatei.next();
-		List<Arbeiter> gemappteDatei = parser.jsonDateiMappen(datei);
+		ZeitRechner zr = new ZeitRechner();
+		//zr.aktuellenTagZeitHinzufuegen(test);//fügt bei jeder ausführung die aktuelleUhrzeit als NEUEN Tag hinzu. Solltest du wahrscheinlich auskommentiert lassen
+		//zr.zeitDesTagesBerechnen(test, 1); //macht noch nichts
+		//zr.aktuellenTagInDatenBankAnlegen(test); //ignorieren ist noch in arbeit
+		test.zeit.zeitarbeitsTag.get(0).get(0).add(zr.aktuelleZeit());
+		parser.abspeichernVonAenderungen(test); //speichert den aktuellen Stand ab
+		konsolenausgabe(test); //gibt dir alle Infos für den Arbeiter und alle seine Arbeitstage
 		
-		konsolenausgabe(gemappteDatei);
-		bearbeite(gemappteDatei);
-
 	}
 
-	private static void konsolenausgabe(List<Arbeiter> gemappteDatei) {
-		for (Arbeiter eintrag : gemappteDatei) {
-			
-			 LocalDateTime date = LocalDateTime.now();
-				String aktuelleZeit = date.getYear()+"."+date.getMonthValue()+"."+date.getDayOfMonth()+"-"+date.getHour()+":"+date.getMinute();
-				 System.out.println(aktuelleZeit);
-				 eintrag.zeit.zeitarbeitsTag.add(aktuelleZeit);
-				 if(	 eintrag.zeit.zeitarbeitsTag.size()%2==0) {
-						System.out.println("Passender Arbeitsabschnitt: "+eintrag.zeit.zeitarbeitsTag.size());
-					}
-					 if( eintrag.zeit.zeitarbeitsTag.size()>=4) {
-						 System.out.println("Davor"+eintrag.zeit.zeitarbeitsTag.size());
-						 eintrag.zeit.zeitarbeitsTag.removeAll(eintrag.zeit.zeitarbeitsTag);
-						 System.out.println("Danach"+eintrag.zeit.zeitarbeitsTag.size());
-					 }
-			System.out.println("**NeuerEintragsAnfang**" + "\n" + "Email:" + eintrag.email + "\nPasswort:" + eintrag.passwort
-					+ "\nLeitenderAngestellter:" + eintrag.leitenderAngestellter + "\nSprache:" + eintrag.sprache
-					+ "\nAktuelle Gleitzeit:" + eintrag.zeit.aktuelleGleitzeit + "\nWochenstunden:"
-					+ eintrag.zeit.wochenstunden + "\nGleitzeit Warngrenze:" + eintrag.zeit.gleitzeitWarngrenze
-					+ "\nZeit Arbeitstag:" + eintrag.zeit.zeitarbeitsTag + "\nMonatszeit:" + eintrag.zeit.monatsZeit[0]+"\n");
-			
-			
-		
-		}
-	}
+	private static void konsolenausgabe(Arbeiter arbeiterFuerAusgabe) {
+		System.out.println("**NeuerEintragsAnfang**" + "\n" + "Email:" + arbeiterFuerAusgabe.email + "\nPasswort:"
+				+ arbeiterFuerAusgabe.passwort + "\nLeitenderAngestellter:" + arbeiterFuerAusgabe.artDesAngestellten
+				+ "\nSprache:" + arbeiterFuerAusgabe.sprache + "\nAktuelle Gleitzeit:"
+				+ arbeiterFuerAusgabe.zeit.aktuelleGleitzeit + "\nWochenstunden:"
+				+ arbeiterFuerAusgabe.zeit.wochenstunden + "\nGleitzeit Warngrenze:"
+				+ arbeiterFuerAusgabe.zeit.gleitzeitWarngrenze +"\n");
+		int l=-1,o=-1,u=-1;
+		for(int i = 0; i< arbeiterFuerAusgabe.zeit.zeitarbeitsTag.size(); i++) {
+			u++;
+			for(int j=0;j< arbeiterFuerAusgabe.zeit.zeitarbeitsTag.get(i).size();j++) {
+				o++;
+				for(int k=0;k< arbeiterFuerAusgabe.zeit.zeitarbeitsTag.get(i).get(j).size()-1;k++) {
+					
+					l++;
+					System.out.println("Jahr"+u+" Monat"+o+" Tag"+l);
+					System.out.println(l+" : "+arbeiterFuerAusgabe.zeit.zeitarbeitsTag.get(i).get(j).get(k));
 
-	public static void bearbeite(List<Arbeiter> zubearbeitendeDatei) {
-//		List<Arbeiter> b = new ArrayList<>();
-		System.out.println("**********");
-		for (Arbeiter eintrag : zubearbeitendeDatei) {
-			System.out.println(eintrag.email + " " + eintrag.zeit.aktuelleGleitzeit);
-
-			if (eintrag.email.contains("jan.holzhausen@bbqgmbh.de")) { // Später hier benutzername abfragen
-				eintrag.zeit.aktuelleGleitzeit += 4; // test
-//				eintrag.zeit.zeitarbeitsTag
+				}
 			}
 		}
-		System.out.println("**********");
-		drucker(zubearbeitendeDatei);
-	}
-
-	public static void drucker(List<Arbeiter> zudruckendeDatei) {
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			mapper.writeValue(new File("src/main/resources/jsonfiles/Daten.json"), zudruckendeDatei);
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		System.out.println("-Finished-");
 	}
 }
