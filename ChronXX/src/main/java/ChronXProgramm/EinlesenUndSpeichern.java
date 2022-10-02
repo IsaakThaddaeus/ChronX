@@ -10,7 +10,7 @@ import java.util.Set;
 
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.databind.ObjectMapper;
-//Hier nichts ver√§ndern!!
+//Hier nichts ver‰ndern!!
 public class EinlesenUndSpeichern {
 	private String dateiPfad;
 	private List<Arbeiter> zuDruckendeWerte = new ArrayList<>();
@@ -39,11 +39,11 @@ public class EinlesenUndSpeichern {
 	private List<Arbeiter> arbeiterEinlesen(File zielDatei) throws IOException {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.findAndRegisterModules();
-		try (MappingIterator<Arbeiter> alleEintr√§geDerJsonDatei = mapper.readerFor(Arbeiter.class)
+		try (MappingIterator<Arbeiter> alleEintr‰geDerJsonDatei = mapper.readerFor(Arbeiter.class)
 				.readValues(zielDatei)) {
 
-			while (alleEintr√§geDerJsonDatei.hasNextValue()) {
-				Arbeiter eineZeile = alleEintr√§geDerJsonDatei.nextValue();
+			while (alleEintr‰geDerJsonDatei.hasNextValue()) {
+				Arbeiter eineZeile = alleEintr‰geDerJsonDatei.nextValue();
 				zuDruckendeWerte.add(eineZeile);
 			}
 			return zuDruckendeWerte;

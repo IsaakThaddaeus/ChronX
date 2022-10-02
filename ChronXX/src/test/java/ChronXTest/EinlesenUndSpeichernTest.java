@@ -38,7 +38,7 @@ public class EinlesenUndSpeichernTest {
 		assertEquals(null,testparser.zuordnungDesEingeloggtenArbeiters(email, passwort));
 	}
 	@Test
-	public void zuordnungDesEingeloggtenArbeiters_Emailadresse_Gro√ügeschrieben_verarbeiten() throws IOException {
+	public void zuordnungDesEingeloggtenArbeiters_Emailadresse_Groﬂgeschrieben_verarbeiten() throws IOException {
 		String email = "JUSTIN.schick@bbqgmbh.de" , passwort = "qwertz123";
 		Arbeiter testArbeiter = new Arbeiter();
 		testArbeiter.email="justin.schick@bbqgmbh.de";

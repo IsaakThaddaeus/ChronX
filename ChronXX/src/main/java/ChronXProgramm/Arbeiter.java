@@ -37,7 +37,7 @@ public class Arbeiter {
 		public double gleitzeitWarngrenze; // Individuelle Warngrenze nur für UI interessant
 
 		@JsonProperty
-		List<List<List<LocalDateTime>>> zeitarbeitsTag = new ArrayList<List<List<LocalDateTime>>>(); // Monat, Tag, einzelne Zeiten. Dennoch sind alle Zeitsätze mit allen Infos ausgestattet
+		List<List<LocalDateTime>> zeitarbeitsTag = new ArrayList<List<LocalDateTime>>(); // Monat, Tag, einzelne Zeiten. Dennoch sind alle Zeitsätze mit allen Infos ausgestattet
 
 		@JsonProperty
 		List<LocalDate> urlaubsUndKrankheitsTage = new ArrayList<LocalDate>();	// noch nicht benutzt
