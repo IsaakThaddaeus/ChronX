@@ -1,1 +1,55 @@
-[{"@email":"jan.holzhausen@bbqgmbh.de","@passwort":"123qwertz","@leitenderAngestellter":true,"@sprache":false,"@Zeit":{"aktuelleGleitzeit":196.0,"wochenstunden":0.0,"gleitzeitWarngrenze":0.0,"zeitarbeitsTag":[],"monatsZeit":[0,0,0,0,0,0,0,0,0,0,0,0]}},{"@email":"justin.schick@bbqgmbh.de","@passwort":"qwertz123","@leitenderAngestellter":true,"@sprache":false,"@Zeit":{"aktuelleGleitzeit":0.0,"wochenstunden":0.0,"gleitzeitWarngrenze":0.0,"zeitarbeitsTag":[],"monatsZeit":[0,0,0,0,0,0,0,0,0,0,0,0]}}]
+[
+  {
+    "email": "justin.schick@bbqgmbh.de",
+    "passwort": "qwertz123",
+    "artDesAngestellten": 0,
+    "geburtstag": [ 2022, 9, 22 ],
+    "sprache": false,
+    "zeit": {
+      "aktuelleGleitzeit": 0.0,
+      "wochenstunden": 40.0,
+      "gleitzeitWarngrenze": 50.0,
+      "zeitarbeitsTag": [
+        [
+          [ 2022, 9, 19, 7, 25 ],
+          [ 2022, 9, 19, 13, 1 ],
+          [ 2022, 9, 19, 14, 1 ],
+          [ 2022, 9, 19, 17, 41 ]
+        ],
+        [
+          [ 2022, 9, 20, 6, 25 ],
+          [ 2022, 9, 20, 9, 7 ],
+          [ 2022, 9, 20, 9, 25 ],
+          [ 2022, 9, 20, 11, 25 ],
+          [ 2022, 9, 20, 12, 1 ],
+          [ 2022, 9, 20, 15, 26 ]
+        ],
+        [
+          [ 2022, 9, 21, 7, 25 ],
+          [ 2022, 9, 21, 13, 1 ],
+          [ 2022, 9, 21, 14, 1 ],
+          [ 2022, 9, 21, 17, 41 ]
+        ],
+        [
+          [ 2022, 9, 22, 7, 25 ],
+          [ 2022, 9, 22, 13, 1 ],
+          [ 2022, 9, 22, 14, 1 ],
+          [ 2022, 9, 22, 17, 41 ]
+        ],
+        [
+          [ 2022, 9, 23, 6, 25 ],
+          [ 2022, 9, 23, 9, 7 ],
+          [ 2022, 9, 23, 9, 25 ],
+          [ 2022, 9, 23, 11, 25 ],
+          [ 2022, 9, 23, 12, 1 ],
+          [ 2022, 9, 23, 15, 27 ]
+        ]
+      ],
+      "urlaubsUndKrankheitsTage": [
+        [ 2022, 9, 24 ],
+        [ 2022, 9, 26 ],
+        [ 2022, 9, 28 ]
+      ]
+    }
+  }
+]

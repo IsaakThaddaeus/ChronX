@@ -1,70 +1,48 @@
 package ChronXProgramm;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+//Hier nichts verändern!!
 public class Arbeiter {
-	@JsonProperty("@email")
+	@JsonProperty
 	public String email;
 
-	@JsonProperty("@passwort")
+	@JsonProperty
 	public String passwort;
 
-	@JsonProperty("@leitenderAngestellter")
-	public boolean leitenderAngestellter;
+	@JsonProperty 
+	public int artDesAngestellten;
+	
+	@JsonProperty
+	LocalDate geburtstag;
 
-	@JsonProperty("@sprache")
+	@JsonProperty
 	public boolean sprache;
 
-	@JsonProperty("@Zeit")
+	@JsonProperty
 	public Zeit zeit;
 
 	public class Zeit {
 
 		@JsonProperty
-		public double aktuelleGleitzeit;
+		public double aktuelleGleitzeit; //gibt die verfügbare Gesamtgleitzeit an
 
 		@JsonProperty
-		public double wochenstunden;
+		public double wochenstunden; //gibt an wie lange der Arbeiter in der Woche Arbeiten muss
 
 		@JsonProperty
-		public double gleitzeitWarngrenze;
+		public double gleitzeitWarngrenze; // Individuelle Warngrenze nur für UI interessant
 
 		@JsonProperty
-		public List<String> zeitarbeitsTag= new ArrayList<>();
+		List<List<LocalDateTime>> zeitarbeitsTag = new ArrayList<List<LocalDateTime>>(); // Monat, Tag, einzelne Zeiten. Dennoch sind alle Zeitsätze mit allen Infos ausgestattet
 
 		@JsonProperty
-		public double[] monatsZeit =new double[12];
-	}
+		List<LocalDate> urlaubsUndKrankheitsTage = new ArrayList<LocalDate>();	// noch nicht benutzt
+		}
+	
 
 }
-//		@JsonProperty("class")
-//		public String clazz;
-//
-//		@JsonProperty
-//		public String threadName;
-//
-//		@JsonProperty
-//		public Mdc mdc;
-//
-//		public class Mdc {
-//
-//			@JsonProperty("TRACE_ID")
-//			public String traceId;
-//		}
-//
-//		@JsonProperty
-//		public Exception exception;
-//
-//		public class Exception {
-//			@JsonProperty
-//			public String stacktrace;
-//
-//			@JsonProperty
-//			public String exception_class;
-//
-//			@JsonProperty
-//			public String exception_message;
-//		}
+
