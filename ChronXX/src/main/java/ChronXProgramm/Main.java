@@ -19,8 +19,8 @@ public class Main {
 		zr.zeiteintragFuerAktuellenTagHinzufuegen(test);
 		
 		List<LocalDateTime> anzupassendeListe = new ArrayList<LocalDateTime>();
-		anzupassendeListe.add(zr.aktuelleZeit().minusDays(10));
-		anzupassendeListe.add(zr.aktuelleZeit().minusDays(10));
+		anzupassendeListe.add(zr.aktuelleZeit());
+		anzupassendeListe.add(zr.aktuelleZeit());
 		zr.gegebeneZeitenAnpasser(anzupassendeListe, test);
 		parser.abspeichernVonAenderungen(test); // speichert den aktuellen Stand ab
 
