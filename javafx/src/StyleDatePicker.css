@@ -1,0 +1,87 @@
+* {
+    -fx-primary-color: #757575;
+    -fx-secondary-color: #dbba51;
+    -fx-light-grey-color: #000000;
+    /*Set focus color*/
+    -fx-focus-color: -fx-secondary-color;
+    /*Increase font size*/
+    -fx-font-size: 1.2em;
+    -fx-control-inner-background: black;
+    -fx-prompt-text-fill: #e2e2e2;
+  }
+   
+  /*-----------------------------------------
+  Customize the right button background color
+  -------------------------------------------*/
+  .date-picker .arrow-button {
+    -fx-background-color: -fx-primary-color;
+    -fx-background-radius: 0;
+  }
+   
+  .date-picker .arrow-button:hover {
+    -fx-background-color: -fx-secondary-color;
+  }
+   
+  .date-picker .arrow-button .arrow {
+    -fx-background-color: rgb(0, 0, 0);
+  }
+   
+  /*-----------------------------------------
+  Customize popup content
+  -------------------------------------------*/
+  .date-picker .hijrah-day-cell {
+    -fx-control-inner-background: black;
+    -fx-background-color: rgb(0, 0, 0);
+    -fx-text-color: rgb(0, 0, 0);
+  }
+   
+  .date-picker .cell:hover {
+    -fx-background-color: #dbba51;
+  }
+   
+  .date-picker .cell:focused {
+    -fx-background-color: #dbba51;
+  }
+
+  .date-picker-popup .today {
+    -fx-background-color: #ca8e1f;
+
+
+  }
+   
+  /*-----------------------------------------
+  Customize the selected cell
+  -------------------------------------------*/
+  .date-picker .selected {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: rgb(0, 0, 0);
+  }
+   
+  .date-picker .selected:focused {
+    -fx-background-color: -fx-primary-color;
+    -fx-text-fill: rgb(255, 255, 255);
+  }
+   
+  .date-picker-popup {
+    -fx-border-color: transparent;
+  }
+   
+  .date-picker-popup .month-year-pane {
+    -fx-background-color: -fx-primary-color;
+  }
+   
+  .date-picker-popup .month-year-pane .label {
+    -fx-text-fill: rgb(255, 255, 255);
+  }
+   
+  .date-picker-popup .week-number-cell {
+    -fx-text-fill: -fx-secondary-color;
+  }
+   
+  /*-----------------------------------------
+  Customize left and right arrow
+  -------------------------------------------*/
+  .date-picker-popup .spinner .button .left-arrow,
+  .date-picker-popup .spinner .button .right-arrow {
+    -fx-background-color: #dbba51;
+  }

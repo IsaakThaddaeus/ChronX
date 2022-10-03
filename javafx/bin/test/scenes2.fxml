@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="scenec1">
+   <children>
+      <Button fx:id="switter" layoutX="248.0" layoutY="262.0" mnemonicParsing="false" onAction="#sts1" prefHeight="42.0" prefWidth="116.0" text="switch" />
+   </children>
+</Pane>
