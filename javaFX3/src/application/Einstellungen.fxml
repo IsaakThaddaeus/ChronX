@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControlStartseite">
+   <children>
+      <ImageView fitHeight="56.0" fitWidth="317.0" layoutX="482.0" layoutY="37.0">
+         <image>
+            <Image url="@../../../Downloads/MicrosoftTeams-image.png" />
+         </image>
+      </ImageView>
+    <AnchorPane layoutX="81.0" layoutY="126.0" minHeight="0.0" minWidth="0.0" prefHeight="674.0" prefWidth="1280.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="126.0">
+         <children>
+            <GridPane alignment="BOTTOM_RIGHT" prefHeight="640.0" prefWidth="1280.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columnConstraints>
+                <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="ALWAYS" maxWidth="1113.0" minWidth="10.0" prefWidth="1113.0" />
+                <ColumnConstraints hgrow="ALWAYS" maxWidth="636.0" minWidth="4.0" prefWidth="50.0" />
+                  <ColumnConstraints fillWidth="false" hgrow="ALWAYS" maxWidth="753.0" minWidth="117.0" prefWidth="117.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints fillHeight="false" maxHeight="603.0" minHeight="10.0" prefHeight="603.0" valignment="BOTTOM" vgrow="NEVER" />
+                <RowConstraints maxHeight="314.0" minHeight="0.0" prefHeight="32.0" vgrow="SOMETIMES" />
+                <RowConstraints fillHeight="false" maxHeight="419.0" minHeight="10.0" prefHeight="39.0" valignment="TOP" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TabPane prefHeight="519.0" prefWidth="942.0" side="LEFT" stylesheets="@StyleTabPane.css" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab closable="false" text="Untitled Tab 1">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        </content>
+                      </Tab>
+                      <Tab text="Untitled Tab 2">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="270.0" prefWidth="674.0" style="-fx-background-color: grey;" />
+                        </content>
+                      </Tab>
+                    </tabs>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </TabPane>
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
