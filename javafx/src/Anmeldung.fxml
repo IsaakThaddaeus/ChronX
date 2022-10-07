@@ -42,11 +42,6 @@
                         <Font name="Calibri" size="24.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="54.0" fitWidth="287.0" layoutX="508.0" layoutY="161.0">
-                     <image>
-                        <Image url="@../../../Downloads/MicrosoftTeams-image.png" />
-                     </image>
-                  </ImageView>
                   <PasswordField fx:id="passwort" layoutX="459.0" layoutY="360.0" onKeyPressed="#enterClick" prefHeight="25.0" prefWidth="383.0" promptText="Passwort" style="-fx-background-color: black; -fx-text-inner-color: white;">
                      <font>
                         <Font name="Calibri Italic" size="16.0" />
@@ -64,13 +59,18 @@
                   </Button>
                   <Pane fx:id="sprache" layoutX="1153.0" layoutY="689.0" onMouseClicked="#spracheClick" onMouseEntered="#spracheHervorClcik" onMouseExited="#spracheHintenClick" prefHeight="83.0" prefWidth="90.0">
                      <children>
-                        <ImageView fitHeight="85.0" fitWidth="89.0" layoutY="-3.0">
+                        <ImageView fitHeight="83.0" fitWidth="90.0">
                            <image>
-                              <Image url="@../../../Downloads/MicrosoftTeams-image%20(1).png" />
+                              <Image url="@Sprache.png" />
                            </image>
                         </ImageView>
                      </children>
                   </Pane>
+                  <ImageView fitHeight="56.0" fitWidth="307.0" layoutX="497.0" layoutY="143.0">
+                     <image>
+                        <Image url="@ChronX.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
          </children>

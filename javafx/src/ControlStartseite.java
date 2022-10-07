@@ -121,6 +121,18 @@ public class ControlStartseite implements Initializable {
     }
 
     @FXML
+    void einstellungenClick(MouseEvent event) throws IOException {
+
+        Parent root2 = FXMLLoader.load(getClass().getResource("Einstellungen.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root2);
+        stage.setScene(scene);
+        stage.show();
+
+
+    }
+
+    @FXML
     void hervorClick(MouseEvent event) {abmelden.setStyle("-fx-background-color: #696969");}
     @FXML
     void hintenClick(MouseEvent event) {abmelden.setStyle("-fx-background-color: grey");}

@@ -23,7 +23,7 @@ try {
         primaryStage.setScene(scene);
         primaryStage.getIcons().add(new Image("icon.png"));
         primaryStage.setResizable(false);
-        primaryStage.show();
+        primaryStage.show(); 
 
 } catch (IOException e) {}
   

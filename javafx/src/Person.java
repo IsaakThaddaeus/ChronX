@@ -8,10 +8,12 @@ public class Person {
     static LocalDate geburtstag;
     static boolean sprache = true;
 
+    static boolean leiter;
+
     static double gleitzeit = 5;
     static double warngrenze = 100;
     static double wochenstunden = 40;
 
-    LocalDate hdatum;
+    static LocalDate hdatum;
     
 }

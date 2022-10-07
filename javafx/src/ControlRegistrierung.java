@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
@@ -25,9 +26,11 @@ public class ControlRegistrierung {
     private Scene scene;
 
     @FXML
-    private TextField email;
+    private TextField emailR;
     @FXML
     private TextField falsch;
+    @FXML
+    private TextField warngrenzeR;
 
     @FXML
     private Button englisch;
@@ -63,6 +66,9 @@ public class ControlRegistrierung {
     private Label passwortInkorrekt;
     @FXML
     private Label passwortUnstimmung;
+
+    @FXML
+    private CheckBox leiterR;
 
 
     @FXML
@@ -133,7 +139,7 @@ public class ControlRegistrierung {
         
         if (min == true) {
 
-            menuButtonH.setText("30");
+            menuButtonH.setText("35");
             menuButtonH.setDisable(true);
         }      
         
@@ -144,7 +150,7 @@ public class ControlRegistrierung {
 
         int counter = 0;
 
-        try{ String[] emailS = email.getText().split("@");
+        try{ String[] emailS = emailR.getText().split("@");
 
             if (emailS[1].equals("BBQgmbh.de")) { 
                 
@@ -168,6 +174,8 @@ public class ControlRegistrierung {
         else {
             counter++;
             passwortInkorrekt.setVisible(false);
+            Person.passwort = passwort.getText();
+
         }
 
 
@@ -183,6 +191,12 @@ public class ControlRegistrierung {
 
 
         if (counter == 3){ 
+
+            Person.email = emailR.getText();
+            Person.geburtstag = kalenderPickerR.getValue();
+            Person.wochenstunden = Double.parseDouble(menuButtonH.getText());
+            Person.warngrenze = Double.parseDouble(warngrenzeR.getText());
+            Person.leiter = leiterR.isSelected();
 
             Parent root = FXMLLoader.load(getClass().getResource("RegistrierungAbgeschlossen.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();

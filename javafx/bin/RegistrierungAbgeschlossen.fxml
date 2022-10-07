@@ -25,9 +25,9 @@
                         <Font name="Calibri" size="36.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="54.0" fitWidth="287.0" layoutX="495.0" layoutY="136.0">
+                  <ImageView fitHeight="54.0" fitWidth="287.0" layoutX="495.0" layoutY="130.0">
                      <image>
-                        <Image url="@../../../Downloads/MicrosoftTeams-image.png" />
+                        <Image url="@ChronX.png" />
                      </image>
                   </ImageView>
                </children>
