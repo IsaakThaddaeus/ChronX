@@ -4,11 +4,14 @@ package org.fxapps.javafx.fatjar;
 public class Eintrag {
     public String kommen;
     public String gegangen;
-    double stunden;
+    public double stunden;
 
-    public Eintrag(String kommen, String gegangen) {
+    public Eintrag() {}
+    
+    public Eintrag(String kommen, String gegangen, double stunden) {
         this.kommen = kommen;
-        this.gegangen = gegangen;    
+        this.gegangen = gegangen;
+        this.stunden = stunden;
     }
 
     public String getKommen() {
