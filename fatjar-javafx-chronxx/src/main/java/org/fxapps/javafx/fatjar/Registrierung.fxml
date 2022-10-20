@@ -86,17 +86,17 @@
                         <Font name="Calibri" size="14.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="leiterR" blendMode="EXCLUSION" layoutX="722.0" layoutY="534.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="107.0" style="-fx-border-color: balack; -fx-focus-color: black;" text="Leiter" textFill="WHITE">
+                  <CheckBox fx:id="leiterR" blendMode="EXCLUSION" layoutX="722.0" layoutY="534.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="202.0" style="-fx-border-color: balack; -fx-focus-color: black;" text="Leitender Angestellter" textFill="WHITE">
                      <font>
                         <Font name="Calibri" size="17.0" />
                      </font>
                   </CheckBox>
-                  <Label layoutX="722.0" layoutY="510.0" prefHeight="17.0" prefWidth="199.0" text="Sind sie ein Leiter?" textFill="#000000b4">
+                  <Label layoutX="722.0" layoutY="510.0" prefHeight="17.0" prefWidth="287.0" text="Sind sie ein leitender Angestellter ?" textFill="#000000b4">
                      <font>
                         <Font name="Calibri" size="14.0" />
                      </font>
                   </Label>
-                  <MenuButton fx:id="menuButtonH" layoutX="461.0" layoutY="602.0" mnemonicParsing="false" style="-fx-background-color: black;" text="Wochenstunden" textFill="#c3c3c3">
+                  <MenuButton fx:id="menuButtonH" layoutX="461.0" layoutY="602.0" mnemonicParsing="false" style="-fx-background-color: black;" stylesheets="@styleMenuButton.css" text="Wochenstunden" textFill="#c3c3c3">
                     <items>
                       <MenuItem fx:id="menuItem30" mnemonicParsing="false" onAction="#menuItem30Click" style="-fx-text-inner-color: white;" text="30" />
                       <MenuItem fx:id="menuItem35" mnemonicParsing="false" onAction="#menuItem35Click" style="-fx-text-inner-color: white;" text="35" />

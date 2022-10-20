@@ -185,7 +185,6 @@ public class ControlRegistrierung {
         else {
             counter++;
             passwortInkorrekt.setVisible(false);
-            Person.passwort = passwort.getText();
 
         }
 
@@ -204,6 +203,7 @@ public class ControlRegistrierung {
         if (counter == 3){ 
 
             Person.email = emailR.getText();
+            Person.passwort = passwort.getText();
             Person.geburtstag = kalenderPickerR.getValue();
             Person.wochenstunden = Double.parseDouble(menuButtonH.getText());
             Person.warngrenze = Double.parseDouble(warngrenzeR.getText());

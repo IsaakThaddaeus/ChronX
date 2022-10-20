@@ -63,7 +63,7 @@ public class ControlEinstellungen implements Initializable {
     private PasswordField passwort2E;
 
     @FXML
-    private Pane zurueckP;
+    private Button zurueckP;
 
     @FXML
     private Slider sliderAmpel;
@@ -107,7 +107,7 @@ public class ControlEinstellungen implements Initializable {
         }
 
     @FXML
-    void zurueckPClick(MouseEvent event) throws IOException {
+    void zurueckPClick(ActionEvent event) throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("/org/fxapps/javafx/fatjar/Startseite.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
