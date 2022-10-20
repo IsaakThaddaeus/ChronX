@@ -18,7 +18,9 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.collections.ObservableList;
@@ -46,6 +48,10 @@ public class ControlZeiterfassung implements Initializable {
     private Button bearbeiten;
     @FXML
     private Button zurueck;
+    @FXML
+    private Button hinzufuegen;
+    @FXML
+    private Button loeschen;
 
     @FXML
     private AnchorPane uebersicht;
@@ -161,12 +167,12 @@ public class ControlZeiterfassung implements Initializable {
       else {
         kg = false;
 
-        Eintrag eintrag = new Eintrag(uhrzeitKommen, uhrzeit[1]);
+        Eintrag eintrag = new Eintrag(uhrzeitKommen, uhrzeit[1], 0.0);
         double stundenD = eintrag.getStunden();
         ObservableList<Eintrag> customers = tabelle.getItems();
         customers.add(eintrag);
         tabelle.setItems(customers);
-  
+   
         
         gehZeit.setText(uhrzeit[1]);
 
@@ -219,6 +225,11 @@ void bearbeitenClick(ActionEvent event) {
       ba = true;
       bearbeiten.setText("Fertig");
       bearbeiten.setStyle("-fx-background-color: grey");
+      
+      hinzufuegen.setVisible(true);
+      loeschen.setVisible(true);
+      
+      tabelle.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {if (newSelection != null) {loeschen.setDisable(false);}});
     }
 
     else {
@@ -226,9 +237,48 @@ void bearbeitenClick(ActionEvent event) {
       ba = false;
       bearbeiten.setText("Bearbeiten");
       bearbeiten.setStyle("-fx-background-color: #dbba51");
+      
+      tabelle.getSelectionModel().clearSelection();
+      hinzufuegen.setVisible(false);
+      loeschen.setVisible(false);
+      loeschen.setDisable(true);
+      
+      Eintrag eintrag2 = new Eintrag();
+      LocalDateTime date = LocalDateTime.now();
+      List<LocalDateTime> arrList = new ArrayList<LocalDateTime>();
+      
+      for(int i = 0; i < tabelle.getItems().size(); i++) {
+    	  
+    	  	eintrag2 = tabelle.getItems().get(i);
+    	  	
+    	  	String[] kommenS = eintrag2.kommen.split(":");
+    	  	String[] gegangenS = eintrag2.gegangen.split(":");
+    	  	
+    	  	//arrList.add(new ArrayList<>());
+    	  	arrList.add(date.withHour(Integer.parseInt(kommenS[0])).withMinute(Integer.parseInt(kommenS[1])).withSecond(0).withNano(0));
+    	  	arrList.add(date.withHour(Integer.parseInt(gegangenS[0])).withMinute(Integer.parseInt(gegangenS[1])).withSecond(0).withNano(0));
+    	  	//arrList.get(i).add(eintrag2.stunden);
+    	  	
+    	  	
+      }
+      
+      System.out.println(arrList);
 
 
     }
+
+}
+
+@FXML
+void bearbeitenHervorClick(MouseEvent event) {
+	
+	if (ba == false) {bearbeiten.setStyle("-fx-background-color: #a18634");}
+	else {bearbeiten.setStyle("-fx-background-color: #696969");}
+}
+@FXML
+void bearbeitenHintenClick(MouseEvent event) {
+	if (ba == false) {bearbeiten.setStyle("-fx-background-color: #dbba51");}
+	else {bearbeiten.setStyle("-fx-background-color: grey");}
 
 }
 
@@ -250,6 +300,32 @@ void KalenderPicker2Click(ActionEvent event) {
 
 
 }
+
+	
+		@FXML
+		void hinzufuegenClick(ActionEvent event) {
+			
+			Eintrag eintrag3 = new Eintrag("00:00", "00:00", 0.0);
+	        double stundenD = eintrag3.getStunden();
+	        ObservableList<Eintrag> customers = tabelle.getItems();
+	        customers.add(eintrag3);
+	        tabelle.setItems(customers);
+		
+		}
+		
+		@FXML
+		void hinzufuegenHervorClick(MouseEvent event) {hinzufuegen.setStyle("-fx-background-color: #034d07");}
+		@FXML
+		void hinzufuegenHintenClick(MouseEvent event) {hinzufuegen.setStyle("-fx-background-color:  #139024");}
+		
+		@FXML
+		void loeschenClick(ActionEvent event) {tabelle.getItems().removeAll(tabelle.getSelectionModel().getSelectedItems());}
+		
+		@FXML
+		void loeschenHervorClick(MouseEvent event) {loeschen.setStyle("-fx-background-color: #800000");}
+		@FXML
+		void loeschenHintenClick(MouseEvent event) {loeschen.setStyle("-fx-background-color:  #c32828");}
+
 
 }
 
