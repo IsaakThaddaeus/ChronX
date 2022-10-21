@@ -19,7 +19,7 @@
    <children>
     <AnchorPane layoutX="81.0" layoutY="126.0" minHeight="0.0" minWidth="0.0" prefHeight="674.0" prefWidth="1280.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="126.0">
          <children>
-            <TabPane layoutX="150.0" layoutY="138.0" prefHeight="473.0" prefWidth="982.0" side="LEFT" style="-fx-background-radius: 100;" stylesheets="@StyleTabPane.css" tabClosingPolicy="UNAVAILABLE">
+            <TabPane layoutX="150.0" layoutY="138.0" prefHeight="496.0" prefWidth="982.0" side="LEFT" style="-fx-background-radius: 100;" stylesheets="@StyleTabPane.css" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab style="-fx-background-radius: 10;" text="Grenzwertanpassung">
                   <content>
@@ -72,7 +72,7 @@
                 </Tab>
                   <Tab closable="false" style="-fx-background-radius: 10;" text="Kontoeinstellungen">
                      <content>
-                        <AnchorPane maxHeight="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="468.0" prefWidth="635.0" style="-fx-background-color: grey; -fx-background-radius: 10;">
+                        <AnchorPane maxHeight="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="522.0" prefWidth="635.0" style="-fx-background-color: grey; -fx-background-radius: 10;">
                            <children>
                               <Label alignment="CENTER" layoutX="149.0" layoutY="31.0" prefHeight="38.0" prefWidth="338.0" text="Kontoeinstellungen" textFill="#dbba51">
                                  <font>
@@ -144,6 +144,11 @@
                                     <Font name="Calibri Italic" size="17.0" />
                                  </font>
                               </Label>
+                              <Button fx:id="acloeschen" layoutX="218.0" layoutY="445.0" mnemonicParsing="false" onAction="#acloeschenClick" onMouseEntered="#acloeschenHervorClick" onMouseExited="#acloeschenHintenClick" prefHeight="34.0" prefWidth="331.0" style="-fx-background-color: #2c2c2c;" text="Account löschen" textFill="RED" visible="false">
+                                 <font>
+                                    <Font name="Calibri" size="20.0" />
+                                 </font>
+                              </Button>
                            </children>
                         </AnchorPane>
                      </content>

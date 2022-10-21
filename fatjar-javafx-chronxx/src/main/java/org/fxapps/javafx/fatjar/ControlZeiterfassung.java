@@ -66,6 +66,8 @@ public class ControlZeiterfassung implements Initializable {
     private Label stundenL;
     @FXML
     public Label aktuelleGleitzeit;
+    @FXML
+    private Label tagesstunden;
 
     @FXML
     private TableView<Eintrag> tabelle;
@@ -223,7 +225,7 @@ void bearbeitenClick(ActionEvent event) {
     if (ba == false) {
       editableCols();
       ba = true;
-      bearbeiten.setText("Fertig");
+      bearbeiten.setText("Speichern");
       bearbeiten.setStyle("-fx-background-color: grey");
       
       hinzufuegen.setVisible(true);
@@ -247,9 +249,13 @@ void bearbeitenClick(ActionEvent event) {
       LocalDateTime date = LocalDateTime.now();
       List<LocalDateTime> arrList = new ArrayList<LocalDateTime>();
       
+      double gesamtStunden = 0;
+      
       for(int i = 0; i < tabelle.getItems().size(); i++) {
     	  
     	  	eintrag2 = tabelle.getItems().get(i);
+    	  	
+    	  	double einzelStunden = eintrag2.getStunden();
     	  	
     	  	String[] kommenS = eintrag2.kommen.split(":");
     	  	String[] gegangenS = eintrag2.gegangen.split(":");
@@ -259,10 +265,16 @@ void bearbeitenClick(ActionEvent event) {
     	  	arrList.add(date.withHour(Integer.parseInt(gegangenS[0])).withMinute(Integer.parseInt(gegangenS[1])).withSecond(0).withNano(0));
     	  	//arrList.get(i).add(eintrag2.stunden);
     	  	
+    	  	gesamtStunden = gesamtStunden + einzelStunden;
+    	  	
     	  	
       }
       
       System.out.println(arrList);
+      System.out.println(gesamtStunden);
+      
+      tagesstunden.setText(gesamtStunden+"");
+      
 
 
     }

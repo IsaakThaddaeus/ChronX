@@ -36,6 +36,10 @@ public class ControlEinstellungen implements Initializable {
 
     @FXML
     private Button aendern;
+    @FXML
+    private Button zurueckP;
+    @FXML
+    private Button acloeschen;
 
     @FXML
     private Circle gruen;
@@ -61,9 +65,6 @@ public class ControlEinstellungen implements Initializable {
 
     @FXML
     private PasswordField passwort2E;
-
-    @FXML
-    private Button zurueckP;
 
     @FXML
     private Slider sliderAmpel;
@@ -127,6 +128,7 @@ public class ControlEinstellungen implements Initializable {
             riegel = true;
             aendern.setText("Fertig");
             aendern.setStyle("-fx-background-color: #dbba51");
+            acloeschen.setVisible(true);
 
            nachnameE.setDisable(false);
            vornameE.setDisable(false);
@@ -196,6 +198,23 @@ public class ControlEinstellungen implements Initializable {
         else {aendern.setStyle("-fx-background-color: #dbba51");}
 
 }
+    
+    @FXML
+    void acloeschenClick(ActionEvent event) throws IOException {
+    	
+    	Parent root = FXMLLoader.load(getClass().getResource("/org/fxapps/javafx/fatjar/Anmeldung.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show(); 
+
+    }
+
+    @FXML
+    void acloeschenHervorClick(MouseEvent event) {acloeschen.setStyle("-fx-background-color: black");}
+    @FXML
+    void acloeschenHintenClick(MouseEvent event) {acloeschen.setStyle("-fx-background-color:  #2c2c2c");}
+
 
 }
 
