@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fxapps.javafx.fatjar.ControlPasswortVergessen">
+   <children>
+      <AnchorPane fx:id="paneP" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="800.0" prefWidth="1280.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-1.0">
+               <children>
+                  <Pane fx:id="sprache" prefHeight="800.0" prefWidth="1278.0" style="-fx-background-color: white;">
+                     <children>
+                        <Button fx:id="bestaetigen" disable="true" layoutX="666.0" layoutY="641.0" mnemonicParsing="false" onAction="#bestaetigenClick" onMouseEntered="#bestaetigenHervorClick" onMouseExited="#bestaetigenHintenClick" prefHeight="28.0" prefWidth="177.0" style="-fx-background-color: grey;" text="Bestätigen">
+                           <font>
+                              <Font name="Calibri Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="abbrechen" layoutX="459.0" layoutY="641.0" mnemonicParsing="false" onAction="#abbrechenClick" onMouseEntered="#abbrechenHervorClick" onMouseExited="#abbrechenHintenClick" prefHeight="28.0" prefWidth="177.0" style="-fx-background-color: grey;" text="abbrechen">
+                           <font>
+                              <Font name="Calibri Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="passwortzurueck" layoutX="459.0" layoutY="459.0" mnemonicParsing="false" onAction="#passwortzurueckClick" onMouseEntered="#passwortzurueckHervorClick" onMouseExited="#passwortzurueckHintenClick" prefHeight="28.0" prefWidth="383.0" style="-fx-background-color: grey;" text="Passwort zurücksetzen">
+                           <font>
+                              <Font name="Calibri Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="benutzernameP" layoutX="459.0" layoutY="321.0" prefHeight="25.0" prefWidth="383.0" promptText="Benutzername" style="-fx-background-color: black; -fx-text-inner-color: white;">
+                           <font>
+                              <Font name="Calibri Italic" size="16.0" />
+                           </font>
+                        </TextField>
+                        <Label fx:id="anmeldung" alignment="CENTER" layoutX="437.0" layoutY="248.0" prefHeight="28.0" prefWidth="428.0" text="Passwort zurücksetzen" textAlignment="CENTER">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <PasswordField fx:id="generalPasswort" layoutX="459.0" layoutY="402.0" prefHeight="25.0" prefWidth="383.0" promptText="Generalpasswort" style="-fx-background-color: black; -fx-text-inner-color: white;">
+                           <font>
+                              <Font name="Calibri Italic" size="16.0" />
+                           </font>
+                        </PasswordField>
+                        <TextField fx:id="falsch" layoutX="454.0" layoutY="388.0" prefHeight="25.0" prefWidth="370.0" style="-fx-text-inner-color: red; -fx-background-color: white;" text="Benutzername oder Passwort ist falsch." visible="false">
+                           <font>
+                              <Font name="Calibri Italic" size="12.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="englisch" layoutX="1042.0" layoutY="711.0" mnemonicParsing="false" onAction="#EnglischClick" prefHeight="40.0" prefWidth="101.0" style="-fx-background-color: black;" text="Englisch" textFill="WHITE" visible="false">
+                           <font>
+                              <Font name="Calibri Bold" size="21.0" />
+                           </font>
+                        </Button>
+                        <Pane fx:id="sprache" layoutX="1153.0" layoutY="689.0" onMouseClicked="#spracheClick" onMouseEntered="#spracheHervorClcik" onMouseExited="#spracheHintenClick" prefHeight="83.0" prefWidth="90.0">
+                           <children>
+                              <ImageView fitHeight="83.0" fitWidth="90.0">
+                                 <image>
+                                    <Image url="@Sprache.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <ImageView fitHeight="56.0" fitWidth="307.0" layoutX="497.0" layoutY="143.0">
+                           <image>
+                              <Image url="@ChronX.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="459.0" layoutY="297.0" text="Bitte geben sie ihre E-mail Adresse ein" textFill="#000000be">
+                           <font>
+                              <Font name="Calibri" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="459.0" layoutY="379.0" prefHeight="17.0" prefWidth="272.0" text="Bitte geben sie das Generalpasswort ein" textFill="#000000be">
+                           <font>
+                              <Font name="Calibri" size="14.0" />
+                           </font>
+                        </Label>
+                        <PasswordField fx:id="passwortP1" disable="true" layoutX="459.0" layoutY="535.0" prefHeight="25.0" prefWidth="383.0" promptText="neues Passwort eingeben" style="-fx-background-color: black; -fx-text-inner-color: white;">
+                           <font>
+                              <Font name="Calibri Italic" size="16.0" />
+                           </font>
+                        </PasswordField>
+                        <Label fx:id="neuesPasswort" disable="true" layoutX="459.0" layoutY="512.0" prefHeight="17.0" prefWidth="466.0" text="Bitte vergeben sie ein neues Passwort (mind. 8 Zeichen und ein Sonderzeichen)" textFill="#000000be">
+                           <font>
+                              <Font name="Calibri" size="14.0" />
+                           </font>
+                        </Label>
+                        <PasswordField fx:id="passwortP2" disable="true" layoutX="459.0" layoutY="573.0" prefHeight="25.0" prefWidth="383.0" promptText="Passwort bestätigen" style="-fx-background-color: black; -fx-text-inner-color: white;">
+                           <font>
+                              <Font name="Calibri Italic" size="16.0" />
+                           </font>
+                        </PasswordField>
+                        <Label fx:id="falschemail" layoutX="459.0" layoutY="355.0" prefHeight="17.0" prefWidth="272.0" text="Dieser Benutzer existiert nicht" textFill="RED" visible="false">
+                           <font>
+                              <Font name="Calibri Italic" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="falschGpasswort" layoutX="459.0" layoutY="435.0" prefHeight="17.0" prefWidth="272.0" text="Das Generalpasswort ist nicht korrekt" textFill="RED" visible="false">
+                           <font>
+                              <Font name="Calibri Italic" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="falschpasswort" layoutX="459.0" layoutY="608.0" prefHeight="17.0" prefWidth="307.0" text="Das Passwort entspricht nicht den Anforderungen" textFill="RED" visible="false">
+                           <font>
+                              <Font name="Calibri Italic" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneerfolgreich" layoutX="435.0" layoutY="280.0" prefHeight="211.0" prefWidth="426.0" style="-fx-background-color: #c6c6c6; -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;" visible="false">
+         <children>
+            <Label alignment="CENTER" layoutX="31.0" layoutY="45.0" prefHeight="23.0" prefWidth="364.0" text="Das Passwort wurde erfolgreich geändert">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="startseite" layoutX="118.0" layoutY="129.0" mnemonicParsing="false" onAction="#startseiteClick" onMouseEntered="#startseiteHervorClick" onMouseExited="#startseiteHintenClick" prefHeight="34.0" prefWidth="191.0" style="-fx-background-color: grey;" text="Zurück zu Startseite">
+               <font>
+                  <Font name="Calibri" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
