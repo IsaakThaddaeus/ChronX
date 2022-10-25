@@ -20,7 +20,7 @@ public class Person {
 	static double wochenstunden = 40;
 
 	static LocalDate hdatum;
-	ZeitRechner zr = new ZeitRechner();
+	static ZeitRechner zr = new ZeitRechner();
 	static EinlesenUndSpeichern parser = new EinlesenUndSpeichern();
 	static Arbeiter test = new Arbeiter();
 
@@ -34,5 +34,15 @@ public class Person {
 	}
 	public static EinlesenUndSpeichern getEinlesenUndSpeichern() {
 		return parser;
+	}
+	
+	public static ZeitRechner getZeitRechner() {
+	        return zr;
+	    }
+	
+	public static String getDatum() {
+		
+			String s = geburtstag.toString();
+			return s;
 	}
 }

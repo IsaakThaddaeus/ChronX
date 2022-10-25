@@ -17,7 +17,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fxapps.javafx.fatjar.ControlEinstellungen">
    <children>
-    <AnchorPane layoutX="81.0" layoutY="126.0" minHeight="0.0" minWidth="0.0" prefHeight="674.0" prefWidth="1280.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="126.0">
+    <AnchorPane fx:id="paneschwarz" layoutX="81.0" layoutY="126.0" minHeight="0.0" minWidth="0.0" prefHeight="674.0" prefWidth="1280.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="126.0">
          <children>
             <TabPane layoutX="150.0" layoutY="138.0" prefHeight="496.0" prefWidth="982.0" side="LEFT" style="-fx-background-radius: 100;" stylesheets="@StyleTabPane.css" tabClosingPolicy="UNAVAILABLE">
               <tabs>
@@ -25,7 +25,7 @@
                   <content>
                     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="359.0" prefWidth="603.0" style="-fx-background-color: grey; -fx-background-radius: 10;">
                            <children>
-                              <Circle fx:id="gruen11" layoutX="509.0" layoutY="117.0" radius="28.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: red;" />
+                              <Circle fx:id="gruen11" layoutX="511.0" layoutY="117.0" radius="28.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: red;" />
                               <Circle fx:id="gruen" layoutX="86.0" layoutY="117.0" radius="28.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: green;" />
                               <Circle fx:id="circleYellow" layoutX="86.0" layoutY="117.0" radius="28.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: dbba51;" />
                               <Label alignment="CENTER_RIGHT" layoutX="79.0" layoutY="187.0" text="0h">
@@ -44,6 +44,11 @@
                                  </font>
                               </Label>
                               <Slider fx:id="sliderAmpel" layoutX="74.0" layoutY="145.0" onMouseClicked="#sliderAmpelClick" prefHeight="44.0" prefWidth="451.0" stylesheets="@StyleSlider1.css" value="15.0" />
+                              <Label alignment="CENTER" layoutX="176.0" layoutY="14.0" prefHeight="38.0" prefWidth="251.0" text="Grenzwertanpassung" textFill="#dbba51">
+                                 <font>
+                                    <Font name="Calibri" size="27.0" />
+                                 </font>
+                              </Label>
                            </children></AnchorPane>
                   </content>
                 </Tab>
@@ -72,69 +77,49 @@
                 </Tab>
                   <Tab closable="false" style="-fx-background-radius: 10;" text="Kontoeinstellungen">
                      <content>
-                        <AnchorPane maxHeight="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="522.0" prefWidth="635.0" style="-fx-background-color: grey; -fx-background-radius: 10;">
+                        <AnchorPane maxHeight="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="429.0" prefWidth="635.0" style="-fx-background-color: grey; -fx-background-radius: 10;">
                            <children>
-                              <Label alignment="CENTER" layoutX="149.0" layoutY="31.0" prefHeight="38.0" prefWidth="338.0" text="Kontoeinstellungen" textFill="#dbba51">
+                              <Label alignment="CENTER" layoutX="96.0" layoutY="30.0" prefHeight="38.0" prefWidth="245.0" text="Kontoeinstellungen:" textFill="#dbba51">
                                  <font>
                                     <Font name="Calibri" size="27.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutY="88.0" prefHeight="38.0" prefWidth="196.0" text="Nachname:">
+                              <Label alignment="CENTER_RIGHT" layoutY="99.0" prefHeight="38.0" prefWidth="196.0" text="E-mail-Adresse:">
                                  <font>
                                     <Font name="Calibri" size="21.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutY="126.0" prefHeight="38.0" prefWidth="196.0" text="Vorname:">
+                              <Label alignment="CENTER_RIGHT" layoutY="191.0" prefHeight="38.0" prefWidth="196.0" text="Passwort:">
                                  <font>
                                     <Font name="Calibri" size="21.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutY="234.0" prefHeight="38.0" prefWidth="196.0" text="E-mail-Adresse:">
-                                 <font>
-                                    <Font name="Calibri" size="21.0" />
-                                 </font>
-                              </Label>
-                              <Label alignment="CENTER_RIGHT" layoutY="281.0" prefHeight="38.0" prefWidth="196.0" text="Passwort:">
-                                 <font>
-                                    <Font name="Calibri" size="21.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="nachnameE" disable="true" layoutX="218.0" layoutY="90.0" prefHeight="34.0" prefWidth="331.0" style="-fx-background-color: black; -fx-text-inner-color: white;" text="Stepper">
+                              <TextField fx:id="emailE" disable="true" layoutX="218.0" layoutY="101.0" prefHeight="34.0" prefWidth="331.0" style="-fx-background-color: black; -fx-text-inner-color: white;" text="Marvin.Stepper@BBQgmbh.de">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </TextField>
-                              <TextField fx:id="vornameE" disable="true" layoutX="218.0" layoutY="128.0" prefHeight="34.0" prefWidth="331.0" style="-fx-background-color: black; -fx-text-inner-color: white;" text="Marvin">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </TextField>
-                              <TextField fx:id="emailE" disable="true" layoutX="218.0" layoutY="236.0" prefHeight="34.0" prefWidth="331.0" style="-fx-background-color: black; -fx-text-inner-color: white;" text="Marvin.Stepper@BBQgmbh.de">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </TextField>
-                              <PasswordField fx:id="passwort1E" disable="true" layoutX="218.0" layoutY="288.0" prefHeight="32.0" prefWidth="331.0" style="-fx-background-color: black; -fx-text-inner-color: white;" text="dsfdtgjsfj">
+                              <PasswordField fx:id="passwort1E" disable="true" layoutX="218.0" layoutY="192.0" prefHeight="32.0" prefWidth="331.0" style="-fx-background-color: black; -fx-text-inner-color: white;" text="dsfdtgjsfj">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </PasswordField>
-                              <PasswordField fx:id="passwort2E" layoutX="218.0" layoutY="327.0" prefHeight="32.0" prefWidth="331.0" style="-fx-background-color: black; -fx-text-inner-color: white;" visible="false">
+                              <PasswordField fx:id="passwort2E" layoutX="218.0" layoutY="237.0" prefHeight="32.0" prefWidth="331.0" style="-fx-background-color: black; -fx-text-inner-color: white;" visible="false">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </PasswordField>
-                              <Button fx:id="aendern" layoutX="218.0" layoutY="398.0" mnemonicParsing="false" onAction="#aendernClick" onMouseEntered="#aendernHervorClick" onMouseExited="#aendernHintenClick" prefHeight="34.0" prefWidth="331.0" style="-fx-background-color: #b5b5b5;" text="Ändern">
+                              <Button fx:id="aendern" layoutX="218.0" layoutY="314.0" mnemonicParsing="false" onAction="#aendernClick" onMouseEntered="#aendernHervorClick" onMouseExited="#aendernHintenClick" prefHeight="34.0" prefWidth="331.0" style="-fx-background-color: #b5b5b5;" text="Ändern">
                                  <font>
                                     <Font name="Calibri" size="20.0" />
                                  </font>
                               </Button>
-                              <Label alignment="CENTER_RIGHT" layoutY="164.0" prefHeight="38.0" prefWidth="196.0" text="Geburtsdatum:">
+                              <Label alignment="CENTER_RIGHT" layoutY="146.0" prefHeight="38.0" prefWidth="196.0" text="Geburtsdatum:">
                                  <font>
                                     <Font name="Calibri" size="21.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="geburtsdatumE" disable="true" layoutX="218.0" layoutY="166.0" prefHeight="34.0" prefWidth="331.0" style="-fx-background-color: black; -fx-text-inner-color: white;" text="27.02.2002">
+                              <TextField fx:id="geburtsdatumE" disable="true" layoutX="218.0" layoutY="147.0" prefHeight="34.0" prefWidth="331.0" style="-fx-background-color: black; -fx-text-inner-color: white;" text="27.02.2002">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -144,11 +129,16 @@
                                     <Font name="Calibri Italic" size="17.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="acloeschen" layoutX="218.0" layoutY="445.0" mnemonicParsing="false" onAction="#acloeschenClick" onMouseEntered="#acloeschenHervorClick" onMouseExited="#acloeschenHintenClick" prefHeight="34.0" prefWidth="331.0" style="-fx-background-color: #2c2c2c;" text="Account löschen" textFill="RED" visible="false">
+                              <Button fx:id="acloeschen" layoutX="218.0" layoutY="372.0" mnemonicParsing="false" onAction="#acloeschenClick" onMouseEntered="#acloeschenHervorClick" onMouseExited="#acloeschenHintenClick" prefHeight="34.0" prefWidth="331.0" style="-fx-background-color: #2c2c2c;" text="Account löschen" textFill="RED" visible="false">
                                  <font>
                                     <Font name="Calibri" size="20.0" />
                                  </font>
                               </Button>
+                              <Label alignment="CENTER" layoutX="341.0" layoutY="30.0" prefHeight="38.0" prefWidth="245.0" text="Vorname Nachname" textFill="#dbba51">
+                                 <font>
+                                    <Font name="Calibri" size="27.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </AnchorPane>
                      </content>
@@ -182,5 +172,24 @@
             <Image url="@ChronX.png" />
          </image>
       </ImageView>
+      <AnchorPane fx:id="paneloeschen" layoutX="420.0" layoutY="300.0" prefHeight="211.0" prefWidth="426.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 10;" visible="false">
+         <children>
+            <Label layoutX="43.0" layoutY="54.0" prefHeight="23.0" prefWidth="347.0" text="Diesen Account unwiderruflich löschen?">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="ja" layoutX="43.0" layoutY="132.0" mnemonicParsing="false" onAction="#jaClick" onMouseEntered="#jaHervorClick" onMouseExited="#jaHintenClick" prefHeight="33.0" prefWidth="152.0" style="-fx-background-color: grey;" text="Ja">
+               <font>
+                  <Font name="Calibri" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="nein" layoutX="226.0" layoutY="132.0" mnemonicParsing="false" onAction="#neinClick" onMouseEntered="#neinHervorClick" onMouseExited="#neinHintenClick" prefHeight="33.0" prefWidth="152.0" style="-fx-background-color: grey;" text="nein">
+               <font>
+                  <Font name="Calibri" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -100,11 +100,11 @@
       </AnchorPane>
       <AnchorPane layoutX="12.0" layoutY="523.0" prefHeight="269.0" prefWidth="1258.0" style="-fx-background-color: #545454; -fx-background-radius: 10;">
          <children>
-            <TableView fx:id="tabelle" editable="true" layoutX="526.0" layoutY="57.0" prefHeight="200.0" prefWidth="718.0" style="-fx-background-radius: 10;" stylesheets="@styleTable.css">
+            <TableView fx:id="tabelle" editable="true" layoutX="526.0" layoutY="57.0" prefHeight="200.0" prefWidth="718.0" stylesheets="@styleTable.css">
               <columns>
-                <TableColumn fx:id="kommen" prefWidth="289.0" style="-fx-text-alignment: center; -fx-font-size: 16;" styleClass="styleTable.table-view .column-header" text="Kommen" />
-                  <TableColumn fx:id="gegangen" prefWidth="292.0" style="-fx-text-alignment: center; -fx-font-size: 16;" styleClass=".table-view .column-header" text="Gehen" />
-                  <TableColumn fx:id="stunden" prefWidth="134.0" style="-fx-font-size: 15;" text="Stunden" />
+                <TableColumn fx:id="kommen" prefWidth="300.0" style="-fx-text-alignment: center; -fx-font-size: 16; -fx-border-color: black;" styleClass="styleTable.table-view .column-header" text="Kommen" />
+                  <TableColumn fx:id="gegangen" prefWidth="300.0" style="-fx-text-alignment: center; -fx-font-size: 16; -fx-border-color: black;" styleClass=".table-view .column-header" text="Gehen" />
+                  <TableColumn fx:id="stunden" prefWidth="115.0" style="-fx-font-size: 15; -fx-border-color: black;" text="Stunden" />
               </columns>
             </TableView>
             <Label layoutX="8.0" layoutY="117.0" prefHeight="36.0" prefWidth="210.0" text="Tagesübersicht" textFill="WHITE">
@@ -112,7 +112,6 @@
                   <Font name="Calibri" size="31.0" />
                </font>
             </Label>
-            <DatePicker fx:id="kalenderPicker2" layoutX="305.0" layoutY="57.0" onAction="#KalenderPicker2Click" prefHeight="0.0" prefWidth="189.0" promptText="TT.MM.JJJJ" stylesheets="@StyleDatePicker.css" />
             <Label layoutX="240.0" layoutY="58.0" text="Tag:" textFill="WHITE">
                <font>
                   <Font name="Calibri" size="26.0" />
@@ -143,6 +142,7 @@
                   <Font name="Calibri" size="26.0" />
                </font>
             </Label>
+            <DatePicker fx:id="kalenderPicker2" layoutX="295.0" layoutY="61.0" onAction="#KalenderPicker2Click" stylesheets="@StyleDatePicker.css" />
          </children>
       </AnchorPane>
       <Button fx:id="zurueck" layoutX="14.0" layoutY="84.0" mnemonicParsing="false" onAction="#zurueckClick" onMouseEntered="#zurueckHervorClick" onMouseExited="#zurueckHintenClick" prefHeight="32.0" prefWidth="56.0" style="-fx-background-color: grey;">

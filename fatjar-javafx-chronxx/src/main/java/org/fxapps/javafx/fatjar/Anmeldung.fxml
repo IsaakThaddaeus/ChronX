@@ -22,11 +22,6 @@
                         <Font name="Calibri Bold" size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="passwortVergessen" layoutX="459.0" layoutY="462.0" mnemonicParsing="false" onMouseEntered="#passwortVergessenHervorClick" onMouseExited="#passwortVergessenHintenClick" prefHeight="28.0" prefWidth="177.0" style="-fx-background-color: grey;" text="Passwort vergessen">
-                     <font>
-                        <Font name="Calibri Bold" size="16.0" />
-                     </font>
-                  </Button>
                   <Button fx:id="anmelden" layoutX="459.0" layoutY="413.0" mnemonicParsing="false" onAction="#anmeldenNext" onMouseEntered="#anmeldenHervorClick" onMouseExited="#anmeldenHintenClick" prefHeight="28.0" prefWidth="383.0" style="-fx-background-color: grey;" text="Anmelden">
                      <font>
                         <Font name="Calibri Bold" size="16.0" />
@@ -71,6 +66,11 @@
                         <Image url="@ChronX.png" />
                      </image>
                   </ImageView>
+                  <Button fx:id="passwortvergessen" layoutX="459.0" layoutY="462.0" mnemonicParsing="false" onAction="#passwortvergessenClick" onMouseEntered="#passwortvergessenHervorClick" onMouseExited="#passwortvergessenHintenClick" prefHeight="28.0" prefWidth="177.0" style="-fx-background-color: grey;" text="Passwort vergessen">
+                     <font>
+                        <Font name="Calibri Bold" size="16.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
          </children>

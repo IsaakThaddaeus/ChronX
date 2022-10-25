@@ -21,11 +21,14 @@ public class Main {
 //		String dateiPfadJsonFile = dateiPfadVonJar.substring(0, dateiPfadVonJar.lastIndexOf("\\")) + "\\jsonfile";
 //		System.out.println(dateiPfadJsonFile);
 
-		
+//		
 //		EinlesenUndSpeichern parser = new EinlesenUndSpeichern();
 //		Arbeiter test = parser.zuordnungDesEingeloggtenArbeiters("justin.schick@bbqgmbh.de", "qwertz123");
-//
 //		ZeitRechner zr = new ZeitRechner();
+//		LocalDateTime a= LocalDateTime.now().minusHours(10);
+//		parser.nameAusEmailErmittler(test);
+//		System.out.println(Person.vorname+" "+Person.nachname);
+//		System.out.println(zr.aktuellAmZeitErfassen(test)+" "+zr.ZeitFuerTabellenAufbereiter(a));
 //		zr.vergangeneTageInDatenBankAnlegen(test); // ignorieren ist noch in arbeit
 //		zr.zeiteintragFuerAktuellenTagHinzufuegen(test);
 //

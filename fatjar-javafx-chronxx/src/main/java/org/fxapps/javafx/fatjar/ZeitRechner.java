@@ -55,18 +55,16 @@ public class ZeitRechner {
 	public Arbeiter zeiteintragFuerAktuellenTagHinzufuegen(Arbeiter aktuellerArbeiter) {
 		// Fuegt dem aktuellen Tag einen Zeitsatz hinzu, wo kuenftig weitere Eintraege
 		// fuer den aktuellen Tag eingetragen werden.
-		if (aktuellerArbeiter.zeitarbeitsTag.get(aktuellerArbeiter.zeitarbeitsTag.size() - 1).get(
-				aktuellerArbeiter.zeitarbeitsTag.get(aktuellerArbeiter.zeitarbeitsTag.size() - 1).size() - 1)
+		if (aktuellerArbeiter.zeitarbeitsTag.get(aktuellerArbeiter.zeitarbeitsTag.size() - 1)
+				.get(aktuellerArbeiter.zeitarbeitsTag.get(aktuellerArbeiter.zeitarbeitsTag.size() - 1).size() - 1)
 				.toLocalDate().equals(aktuelleZeit().toLocalDate())) {
 
-			aktuellerArbeiter.zeitarbeitsTag.get(aktuellerArbeiter.zeitarbeitsTag.size() - 1)
-					.add(aktuelleZeit());
+			aktuellerArbeiter.zeitarbeitsTag.get(aktuellerArbeiter.zeitarbeitsTag.size() - 1).add(aktuelleZeit());
 			return aktuellerArbeiter;
 		} else {
 			List<LocalDateTime> zeitarbeitsTag = new ArrayList<LocalDateTime>();
 			aktuellerArbeiter.zeitarbeitsTag.add(zeitarbeitsTag);
-			aktuellerArbeiter.zeitarbeitsTag.get(aktuellerArbeiter.zeitarbeitsTag.size() - 1)
-					.add(aktuelleZeit());
+			aktuellerArbeiter.zeitarbeitsTag.get(aktuellerArbeiter.zeitarbeitsTag.size() - 1).add(aktuelleZeit());
 			return aktuellerArbeiter;
 
 		}
@@ -122,39 +120,50 @@ public class ZeitRechner {
 		}
 		return false;
 	}
+
 	public List<LocalDateTime> eintraegeFuerBeliebigenTagAufrufen(LocalDate date, Arbeiter arbeiter) {
-		
-		for(int i=0; i<arbeiter.zeitarbeitsTag.size();i++) {
-			if(arbeiter.zeitarbeitsTag.get(i).get(0).equals(date)) {
-				System.out.println("Tag existiert in Datenbank");
+		for (int i = 0; i < arbeiter.zeitarbeitsTag.size(); i++) {
+
+			if (arbeiter.zeitarbeitsTag.get(i).get(0).toLocalDate().equals(date)) {
 				return arbeiter.zeitarbeitsTag.get(i);
 			}
 		}
 		System.out.println("ERROR: Tag existiert NICHT in Datenbank");
-		
+
 		return null;
+	}
+
+	public LocalDateTime aktuellAmZeitErfassen(Arbeiter arbeiter) {
+		if (arbeiter.zeitarbeitsTag.get(arbeiter.zeitarbeitsTag.size() - 1).size() % 2 != 0) {
+			return arbeiter.zeitarbeitsTag.get(arbeiter.zeitarbeitsTag.size() - 1)
+					.get(arbeiter.zeitarbeitsTag.get(arbeiter.zeitarbeitsTag.size() - 1).size() - 1);
+			//nimmt letzten Zeiteintrag, wenn die Menge an Zeiteinträgen ungerade ist.
+		}
+		return null;
+	}
+	public String ZeitFuerTabellenAufbereiter(LocalDateTime zeitEintrag) {
+		return zeitEintrag.toString().substring(zeitEintrag.toString().indexOf(':')-2,zeitEintrag.toString().indexOf(':')+3);
 	}
 
 	public void gegebeneZeitenAnpasser(List<LocalDateTime> zuaenderndeEintraege, Arbeiter arbeiter) {
 //		Ueberprueft ob es Eintraege am gewuenschten Tag gibt und ersetzt diese durch die neuen Eintraege.
 		for (int i = 0; i < arbeiter.zeitarbeitsTag.size(); i++) {
 
-			if (arbeiter.zeitarbeitsTag.get(i).get(0).toLocalDate()
-					.equals(zuaenderndeEintraege.get(0).toLocalDate())) {
+			if (arbeiter.zeitarbeitsTag.get(i).get(0).toLocalDate().equals(zuaenderndeEintraege.get(0).toLocalDate())) {
 				System.out.println(arbeiter.zeitarbeitsTag.get(i).get(0) + " Test ");
 				arbeiter.zeitarbeitsTag.get(i).clear();
 				arbeiter.zeitarbeitsTag.get(i).addAll(zuaenderndeEintraege);
 				EinlesenUndSpeichern.abspeichernVonAenderungen(arbeiter);
 				break;
-				
+
 			}
 		}
 	}
 
 	public boolean wurdePauseEingehalten(Arbeiter MitArbeiter, LocalDate tag) {
-		if (MitArbeiter.artDesAngestellten == true) { 
-			//true bedeutet das der angestellte eine Führungskraft ist.
-			//Die nach Gesetz anders behandelt wird.
+		if (MitArbeiter.artDesAngestellten == true) {
+			// true bedeutet das der angestellte eine Führungskraft ist.
+			// Die nach Gesetz anders behandelt wird.
 			return true;
 		}
 		List<LocalDateTime> zeitArbeitsTag = null;
@@ -162,7 +171,7 @@ public class ZeitRechner {
 			if (MitArbeiter.zeitarbeitsTag.get(i).get(0).toLocalDate().equals(tag)
 					&& MitArbeiter.zeitarbeitsTag.get(i).size() % 2 == 0) {
 				zeitArbeitsTag = MitArbeiter.zeitarbeitsTag.get(i);
-				System.out.println("Ausgewählter Tag: "+zeitArbeitsTag);
+				System.out.println("Ausgewählter Tag: " + zeitArbeitsTag);
 				break;
 			}
 		}
@@ -291,8 +300,8 @@ public class ZeitRechner {
 
 		for (int i = 0; i < mitarbeiter.zeitarbeitsTag.size(); i++) {
 			if (mitarbeiter.zeitarbeitsTag.get(i).get(0).getYear() == LocalDateTime.now().getYear()
-					&& mitarbeiter.zeitarbeitsTag.get(i).get(0).get(IsoFields.QUARTER_OF_YEAR) == LocalDateTime
-							.now().get(IsoFields.QUARTER_OF_YEAR)) {
+					&& mitarbeiter.zeitarbeitsTag.get(i).get(0).get(IsoFields.QUARTER_OF_YEAR) == LocalDateTime.now()
+							.get(IsoFields.QUARTER_OF_YEAR)) {
 				gleitzeit += rechneZeitarbeitsTag(mitarbeiter.zeitarbeitsTag.get(i), mitarbeiter)
 						- (mitarbeiter.wochenstunden / 6);
 			}

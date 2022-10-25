@@ -21,7 +21,8 @@ public class EinlesenUndSpeichern {
 	private static String dateiPfad;
 	public static List<Arbeiter> zuDruckendeWerte = new ArrayList<>();
 	Set<File> datein = new HashSet<>();
-	
+	private static final String generalPasswort = "ysaEsIgnidoc";
+
 	public EinlesenUndSpeichern() {
 
 		String dateiPfadVonJar = null;
@@ -51,44 +52,50 @@ public class EinlesenUndSpeichern {
 		}
 		return datein;
 	}
-//	private Set<File> leseDateiAusOrdner(File datei) throws IOException {
-//		System.out.println(datei);
-//	
-//		
-//
-//				datein.add(new File("src/main/java/org/fxapps/javafx/fatjar/Daten.json"));
-//		
-//				System.out.println(datein);
-//		return datein;
-//	}
-public static boolean bereitseingelesen=false;
+
+	public boolean arbeiterloeschen(Arbeiter arbeiter) {
+		try {
+			zuDruckendeWerte.remove(arbeiter);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	public void nameAusEmailErmittler(Arbeiter arbeiter) {
+		String vorname=arbeiter.email.substring(0,arbeiter.email.indexOf('.'));
+		String nachname= arbeiter.email.substring(arbeiter.email.indexOf('.')+1,(arbeiter.email.indexOf('@'))); 
+		
+		Person.vorname = vorname.substring(0, 1).toUpperCase()+vorname.substring(1, vorname.length());
+		Person.nachname = nachname.substring(0, 1).toUpperCase()+nachname.substring(1, nachname.length());
+	}
+
+	public static boolean bereitseingelesen = false;
+
 	private List<Arbeiter> arbeiterEinlesen(File zielDatei) throws IOException {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.findAndRegisterModules();
 		try (MappingIterator<Arbeiter> alleEintraegeDerJsonDatei = mapper.readerFor(Arbeiter.class)
 				.readValues(zielDatei)) {
-			if(!bereitseingelesen) {
-				bereitseingelesen =true;
-			while (alleEintraegeDerJsonDatei.hasNextValue()) {
-				Arbeiter eineZeile = alleEintraegeDerJsonDatei.nextValue();
-				zuDruckendeWerte.add(eineZeile);
-				System.out.println("Hinzugefügt");
-			}}
+			if (!bereitseingelesen) {
+				bereitseingelesen = true;
+				while (alleEintraegeDerJsonDatei.hasNextValue()) {
+					Arbeiter eineZeile = alleEintraegeDerJsonDatei.nextValue();
+					zuDruckendeWerte.add(eineZeile);
+					System.out.println("Hinzugefügt");
+				}
+			}
 			return zuDruckendeWerte;
 		}
 	}
-	
+
 	public Arbeiter zuordnungDesEingeloggtenArbeiters(String email, String passwort) throws IOException {
 		Set<File> rohDatei = leseDateiAusOrdner(new File(dateiPfad));
 		Iterator<File> iteratorDerRohDatei = rohDatei.iterator();
 		File datei = iteratorDerRohDatei.next();
-		List<Arbeiter> gemappteDatei=null;
-		
-		
-			gemappteDatei	= arbeiterEinlesen(datei);
-		
-		
-		
+		List<Arbeiter> gemappteDatei = null;
+
+		gemappteDatei = arbeiterEinlesen(datei);
+
 		for (Arbeiter eintrag : gemappteDatei) {
 			if (eintrag.email.equalsIgnoreCase(email) && eintrag.passwort.equals(passwort)) {
 				System.out.println("Zugriff auf " + eintrag.email + " genehmigt");
@@ -96,7 +103,7 @@ public static boolean bereitseingelesen=false;
 			}
 		}
 		System.out.println("Falsche Login Daten");
-		
+
 		return null;
 	}
 

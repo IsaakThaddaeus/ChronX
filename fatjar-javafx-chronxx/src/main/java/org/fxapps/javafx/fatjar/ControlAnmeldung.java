@@ -33,7 +33,7 @@ public class ControlAnmeldung {
     @FXML
     public Button registrierung;
     @FXML
-    private Button passwortVergessen;
+    private Button passwortvergessen;
 
     
     @FXML
@@ -132,7 +132,7 @@ public class ControlAnmeldung {
             benutzername.setPromptText("Benutzername");
             passwort.setPromptText("Passwort");
             anmelden.setText("Anmelden");
-            passwortVergessen.setText("Passwort vergessen");
+            passwortvergessen.setText("Passwort vergessen");
             registrierung.setText("Registrierung");
 
         }
@@ -145,7 +145,7 @@ public class ControlAnmeldung {
             benutzername.setPromptText("username");
             passwort.setPromptText("password");
             anmelden.setText("sign in");
-            passwortVergessen.setText("forgot password");
+            passwortvergessen.setText("forgot password");
             registrierung.setText("registration");
 
         }
@@ -159,11 +159,6 @@ public class ControlAnmeldung {
     void anmeldenHervorClick(MouseEvent event) {anmelden.setStyle("-fx-background-color: #696969");}
     @FXML
     void anmeldenHintenClick(MouseEvent event) {anmelden.setStyle("-fx-background-color: grey");}
-
-    @FXML
-    void passwortVergessenHervorClick(MouseEvent event) {passwortVergessen.setStyle("-fx-background-color: #696969");}
-    @FXML
-    void passwortVergessenHintenClick(MouseEvent event) {passwortVergessen.setStyle("-fx-background-color: grey");}
 
     @FXML
     void registrierungHervorClick(MouseEvent event) {registrierung.setStyle("-fx-background-color: #696969");}
@@ -189,6 +184,25 @@ public class ControlAnmeldung {
         stage.show(); 
 
     }
+    
+    @FXML
+    void passwortvergessenClick(ActionEvent event) throws IOException {
+    	
+    	Parent root = FXMLLoader.load(getClass().getResource("/org/fxapps/javafx/fatjar/PasswortVergessen.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show(); 
+
+    }
+
+    @FXML
+    void passwortvergessenHervorClick(MouseEvent event) {passwortvergessen.setStyle("-fx-background-color: #696969");}
+    @FXML
+    void passwortvergessenHintenClick(MouseEvent event) {passwortvergessen.setStyle("-fx-background-color: grey");}
+
+    
+   
 
 
 

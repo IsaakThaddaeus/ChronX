@@ -34,12 +34,22 @@ import javafx.geometry.*;
 
 public class ControlEinstellungen implements Initializable {
 
+	@FXML
+	private AnchorPane paneloeschen;
+	@FXML
+    private AnchorPane paneschwarz;
+
+	
     @FXML
     private Button aendern;
     @FXML
     private Button zurueckP;
     @FXML
     private Button acloeschen;
+    @FXML
+    private Button ja;
+    @FXML
+    private Button nein;
 
     @FXML
     private Circle gruen;
@@ -52,10 +62,7 @@ public class ControlEinstellungen implements Initializable {
     private TextField emailE;
     @FXML
     private TextField geburtsdatumE;
-    @FXML
-    private TextField nachnameE;
-    @FXML
-    private TextField vornameE;
+    
 
     @FXML
     private Label passwortAnforderungen;
@@ -92,13 +99,13 @@ public class ControlEinstellungen implements Initializable {
                     }
                 });
                 
-                sliderAmpel.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {circleYellow.setCenterX(new_val.doubleValue() * 4.238);});
+                sliderAmpel.valueProperty().addListener((ObservableValue<? extends Number> ov, Number old_val, Number new_val) -> {circleYellow.setCenterX(new_val.doubleValue() * 4.255);});
                 sliderAmpel.valueProperty().addListener((obs,old,val)->text.setText(val.intValue()+ ""));
                 Person.warngrenze = sliderAmpel.getValue();
 
-                nachnameE.setText(Person.nachname);
-                vornameE.setText(Person.vorname);
-                //geburtsdatumE.setText(formatter.format(Person.geburtstag));
+//                nachnameE.setText(Person.nachname);
+//                vornameE.setText(Person.vorname);
+//                //geburtsdatumE.setText(formatter.format(Person.geburtstag));
                 emailE.setText(Person.email);
                 passwort1E.setText(Person.passwort);
                 passwort2E.setText(Person.passwort);
@@ -130,8 +137,8 @@ public class ControlEinstellungen implements Initializable {
             aendern.setStyle("-fx-background-color: #dbba51");
             acloeschen.setVisible(true);
 
-           nachnameE.setDisable(false);
-           vornameE.setDisable(false);
+//           nachnameE.setDisable(false);
+//           vornameE.setDisable(false);
            geburtsdatumE.setDisable(false);
            emailE.setDisable(false);
            passwort1E.setDisable(false);
@@ -146,17 +153,18 @@ public class ControlEinstellungen implements Initializable {
 
             aendern.setText("Ändern");
             aendern.setStyle("-fx-background-color: #4d4d4d");
+            acloeschen.setVisible(false);
             //aendern.setStyle("-fx-text-fill: #dbba51");
 
-            nachnameE.setDisable(true);
-           vornameE.setDisable(true);
+//            nachnameE.setDisable(true);
+//           vornameE.setDisable(true);
            geburtsdatumE.setDisable(true);
            emailE.setDisable(true);
            passwort1E.setDisable(true);
            passwort2E.setVisible(false);
 
-           Person.nachname = nachnameE.getText();
-           Person.vorname = vornameE.getText();
+//           Person.nachname = nachnameE.getText();
+//           Person.vorname = vornameE.getText();
 
            Person.geburtstag = LocalDate.parse(geburtsdatumE.getText(), formatter);
 
@@ -200,20 +208,45 @@ public class ControlEinstellungen implements Initializable {
 }
     
     @FXML
-    void acloeschenClick(ActionEvent event) throws IOException {
+    void acloeschenClick(ActionEvent event) {
     	
-    	Parent root = FXMLLoader.load(getClass().getResource("/org/fxapps/javafx/fatjar/Anmeldung.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show(); 
-
+    	paneloeschen.setVisible(true);
+    	paneschwarz.setDisable(true);
+    	
     }
 
     @FXML
     void acloeschenHervorClick(MouseEvent event) {acloeschen.setStyle("-fx-background-color: black");}
     @FXML
     void acloeschenHintenClick(MouseEvent event) {acloeschen.setStyle("-fx-background-color:  #2c2c2c");}
+    
+    @FXML
+    void jaClick(ActionEvent event) throws IOException {
+    	
+    	Parent root = FXMLLoader.load(getClass().getResource("/org/fxapps/javafx/fatjar/Anmeldung.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show(); 
+    }
+
+    @FXML
+    void jaHervorClick(MouseEvent event) {ja.setStyle("-fx-background-color: #696969");}
+    @FXML
+    void jaHintenClick(MouseEvent event) {ja.setStyle("-fx-background-color: grey");}
+    
+    @FXML
+    void neinClick(ActionEvent event) {
+    	
+    	paneloeschen.setVisible(false);
+    	paneschwarz.setDisable(false);
+    	
+    }
+
+    @FXML
+    void neinHervorClick(MouseEvent event) {nein.setStyle("-fx-background-color: #696969");}
+    @FXML
+    void neinHintenClick(MouseEvent event) {nein.setStyle("-fx-background-color: grey");}
 
 
 }

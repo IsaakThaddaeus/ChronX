@@ -75,7 +75,7 @@ public class ControlZeiterfassung implements Initializable {
 	private TableColumn<Eintrag, Double> stunden;
 
 	@FXML
-	public static DatePicker kalenderPicker2;
+	public DatePicker kalenderPicker2;
 
 	@FXML
 	private Circle gelb2;
@@ -133,6 +133,8 @@ public class ControlZeiterfassung implements Initializable {
 			rot2.setStyle("-fx-fill: #c32828");
 
 		}
+		
+		kalenderPicker2.setValue(LocalDate.now());
 
 	}
 
@@ -143,13 +145,7 @@ public class ControlZeiterfassung implements Initializable {
 	void startClick(ActionEvent event) {
 
 		String datum = LocalDateTime.now().withSecond(0).withNano(0).toString();
-
 		String[] uhrzeit = datum.split("T");
-
-		System.out.println(uhrzeit[1] + "  1");
-		// uhrzeit[1] = uhrzeit[1].substring(0,uhrzeit[1].length()-13);
-
-		System.out.println(uhrzeit[1] + "  2");
 
 		if (kg == false) {
 			kg = true;
@@ -335,9 +331,25 @@ public class ControlZeiterfassung implements Initializable {
 		//hier hinzufuegen
 
 		LocalDate datum = kalenderPicker2.getValue();
-		Person.hdatum = datum;
+		//Person.hdatum = datum;
+		System.out.println("aktueller Tag " + datum);
+		
+		 List<LocalDateTime> a = Person.getZeitRechner().eintraegeFuerBeliebigenTagAufrufen(datum, Person.getAktuellEingeloggterArbeiter());
+		
+		System.out.println(a);
+		 
+	
+		 
+			for (int i = 0; i < a.size(); i++) {
+			 
+			 System.out.println("Liste aktueller Tag" + a.get(i));
+			 
+			 
+			 	
+		 }
 
 	}
+	
 
 	@FXML
 	void hinzufuegenClick(ActionEvent event) {
