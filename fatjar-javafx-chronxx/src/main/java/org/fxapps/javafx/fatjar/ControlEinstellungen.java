@@ -66,6 +66,8 @@ public class ControlEinstellungen implements Initializable {
 
     @FXML
     private Label passwortAnforderungen;
+    @FXML
+    private Label vornachname;
 
     @FXML
     private PasswordField passwort1E;
@@ -103,12 +105,11 @@ public class ControlEinstellungen implements Initializable {
                 sliderAmpel.valueProperty().addListener((obs,old,val)->text.setText(val.intValue()+ ""));
                 Person.warngrenze = sliderAmpel.getValue();
 
-//                nachnameE.setText(Person.nachname);
-//                vornameE.setText(Person.vorname);
-//                //geburtsdatumE.setText(formatter.format(Person.geburtstag));
+                vornachname.setText(Person.vorname + " " + Person.nachname);
                 emailE.setText(Person.email);
                 passwort1E.setText(Person.passwort);
                 passwort2E.setText(Person.passwort);
+                
 
 
                 
@@ -222,6 +223,10 @@ public class ControlEinstellungen implements Initializable {
     
     @FXML
     void jaClick(ActionEvent event) throws IOException {
+    	
+    	boolean funktioniert = Person.getEinlesenUndSpeichern().arbeiterloeschen(Person.getAktuellEingeloggterArbeiter());
+    	
+    	System.out.println(funktioniert);
     	
     	Parent root = FXMLLoader.load(getClass().getResource("/org/fxapps/javafx/fatjar/Anmeldung.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

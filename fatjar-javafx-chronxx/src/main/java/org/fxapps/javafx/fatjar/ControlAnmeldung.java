@@ -80,6 +80,7 @@ public class ControlAnmeldung {
         try {
 			if (Person.getEinlesenUndSpeichern().zuordnungDesEingeloggtenArbeiters(bn, ps)==null)  {
 				
+				
 				System.out.println("ungültig");
 				falsch.setVisible(true);
 				
@@ -89,6 +90,10 @@ public class ControlAnmeldung {
 				Person.passwort=ps;
 				Person.setAktuellEingeloggtenArbeiter();
 				System.out.println("BN: "+Person.email+" PS: "+Person.passwort);
+				
+				Person.getEinlesenUndSpeichern().nameAusEmailErmittler(Person.getAktuellEingeloggterArbeiter());
+				Person.getZeitRechner().vergangeneTageInDatenBankAnlegen(Person.getAktuellEingeloggterArbeiter());
+				
 				sts1(event);
 				
 			}

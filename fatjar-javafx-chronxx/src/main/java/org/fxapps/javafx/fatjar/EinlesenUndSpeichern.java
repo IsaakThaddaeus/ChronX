@@ -56,17 +56,23 @@ public class EinlesenUndSpeichern {
 	public boolean arbeiterloeschen(Arbeiter arbeiter) {
 		try {
 			zuDruckendeWerte.remove(arbeiter);
+			drucker();
 			return true;
 		} catch (Exception e) {
 			return false;
 		}
 	}
 	public void nameAusEmailErmittler(Arbeiter arbeiter) {
+		
+		try {
 		String vorname=arbeiter.email.substring(0,arbeiter.email.indexOf('.'));
 		String nachname= arbeiter.email.substring(arbeiter.email.indexOf('.')+1,(arbeiter.email.indexOf('@'))); 
 		
 		Person.vorname = vorname.substring(0, 1).toUpperCase()+vorname.substring(1, vorname.length());
 		Person.nachname = nachname.substring(0, 1).toUpperCase()+nachname.substring(1, nachname.length());
+		
+		}
+		catch(Exception e) {}
 	}
 
 	public static boolean bereitseingelesen = false;

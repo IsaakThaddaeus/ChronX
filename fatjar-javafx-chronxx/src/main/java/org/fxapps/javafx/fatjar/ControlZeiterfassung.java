@@ -97,6 +97,9 @@ public class ControlZeiterfassung implements Initializable {
 		stage.show();
 
 	}
+	
+	boolean kg = false;
+	String uhrzeitKommen;
 
 	/*
 	 * (non-Javadoc)
@@ -135,11 +138,40 @@ public class ControlZeiterfassung implements Initializable {
 		}
 		
 		kalenderPicker2.setValue(LocalDate.now());
-
+		
+		LocalDateTime startzeit = Person.getZeitRechner().aktuellAmZeitErfassen(Person.getAktuellEingeloggterArbeiter());
+		
+		if (startzeit != null) {
+			
+			kg = true;
+			kommZeit.setText(Person.getZeitRechner().zeitFuerTabellenAufbereiter(startzeit));
+			start.setStyle("-fx-background-color: grey");
+			start.setText("Zeiterfassung beenden");
+			uhrzeitKommen = Person.getZeitRechner().zeitFuerTabellenAufbereiter(startzeit);
+			
+			
+		}
+		
+		List <LocalDateTime> listeAktuellerTag = Person.getZeitRechner().eintraegeFuerBeliebigenTagAufrufen(LocalDate.now(), Person.getAktuellEingeloggterArbeiter());
+		
+		double gesamtZeit2 = 0;
+		
+		for (int i = 0; i < listeAktuellerTag.size(); i = i + 2) {
+			
+			String zk = Person.getZeitRechner().zeitFuerTabellenAufbereiter(listeAktuellerTag.get(i));
+			String zg = Person.getZeitRechner().zeitFuerTabellenAufbereiter(listeAktuellerTag.get(i + 1));
+			
+			Eintrag eintrag4 = new Eintrag(zk, zg, 0.0);
+			double stundenD = eintrag4.getStunden();
+			ObservableList<Eintrag> customers = tabelle.getItems();
+			customers.add(eintrag4);
+			tabelle.setItems(customers);
+			gesamtZeit2 = gesamtZeit2 + eintrag4.stunden;
+		}
+		
+		tagesstunden.setText(gesamtZeit2+"");
+		
 	}
-
-	boolean kg = false;
-	String uhrzeitKommen;
 
 	@FXML
 	void startClick(ActionEvent event) {
@@ -155,11 +187,13 @@ public class ControlZeiterfassung implements Initializable {
 			stundenL.setText("");
 			kommZeit.setText(uhrzeit[1]);
 			uhrzeitKommen = uhrzeit[1];
-
-			/*
-			 * Code hinzufuegen Zeit gekommen
-			 */
-		} else {
+			
+			Person.getZeitRechner().zeiteintragFuerAktuellenTagHinzufuegen(Person.getAktuellEingeloggterArbeiter());
+			EinlesenUndSpeichern.abspeichernVonAenderungen(Person.getAktuellEingeloggterArbeiter());
+			
+			} 
+		
+		else {
 			kg = false;
 
 			Eintrag eintrag = new Eintrag(uhrzeitKommen, uhrzeit[1], 0.0);
@@ -173,15 +207,14 @@ public class ControlZeiterfassung implements Initializable {
 			start.setText("Zeiterfassung starten");
 			start.setStyle("-fx-background-color:  #dbba51");
 			stundenL.setText(Double.toString(stundenD));
+			
+			Person.getZeitRechner().zeiteintragFuerAktuellenTagHinzufuegen(Person.getAktuellEingeloggterArbeiter());
+			EinlesenUndSpeichern.abspeichernVonAenderungen(Person.getAktuellEingeloggterArbeiter());
+			
+			/*
+			 *  Hinzufügen Jan du Eumel: Zeitverstoß Rückgabe als String
+			 */
 
-			/*
-			 * Code hinzufuegen Zeit gekommen
-			 */
-//			Person.getAktuellEingeloggterArbeiter(); Hier gehts weiter
-			/*
-			 * kalenderPicker2. setValue(null); LocalDate date = LocalDate.now();
-			 * kalenderPicker2.setValue(date); kalenderPicker2.setPromptText("Hallo");
-			 */
 
 		}
 	}
@@ -257,7 +290,7 @@ public class ControlZeiterfassung implements Initializable {
 			hinzufuegen.setVisible(false);
 			loeschen.setVisible(false);
 			loeschen.setDisable(true);
-//Bricht gerade ab deshalb ausgeklammert 
+
 			Eintrag eintrag2 = new Eintrag();
 			LocalDateTime date = LocalDateTime.now();
 			List<LocalDateTime> arrList = new ArrayList<LocalDateTime>();
@@ -290,6 +323,10 @@ public class ControlZeiterfassung implements Initializable {
 			System.out.println("ER GEHT HIER HIN");
 
 			zr.gegebeneZeitenAnpasser(arrList, Person.getAktuellEingeloggterArbeiter());
+			
+			/*
+			 *  Hinzufügen Jan du Eumel: Zeitverstoß Rückgabe als String
+			 */
 
 		}
 

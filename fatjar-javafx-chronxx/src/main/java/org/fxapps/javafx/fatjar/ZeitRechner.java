@@ -141,7 +141,7 @@ public class ZeitRechner {
 		}
 		return null;
 	}
-	public String ZeitFuerTabellenAufbereiter(LocalDateTime zeitEintrag) {
+	public String zeitFuerTabellenAufbereiter(LocalDateTime zeitEintrag) {
 		return zeitEintrag.toString().substring(zeitEintrag.toString().indexOf(':')-2,zeitEintrag.toString().indexOf(':')+3);
 	}
 

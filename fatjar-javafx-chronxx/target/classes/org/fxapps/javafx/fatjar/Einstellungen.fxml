@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fxapps.javafx.fatjar.ControlEinstellungen">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fxapps.javafx.fatjar.ControlEinstellungen">
    <children>
     <AnchorPane fx:id="paneschwarz" layoutX="81.0" layoutY="126.0" minHeight="0.0" minWidth="0.0" prefHeight="674.0" prefWidth="1280.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="126.0">
          <children>
@@ -134,7 +134,7 @@
                                     <Font name="Calibri" size="20.0" />
                                  </font>
                               </Button>
-                              <Label alignment="CENTER" layoutX="341.0" layoutY="30.0" prefHeight="38.0" prefWidth="245.0" text="Vorname Nachname" textFill="#dbba51">
+                              <Label fx:id="vornachname" alignment="CENTER" layoutX="341.0" layoutY="30.0" prefHeight="38.0" prefWidth="245.0" text="Vorname Nachname" textFill="#dbba51">
                                  <font>
                                     <Font name="Calibri" size="27.0" />
                                  </font>
@@ -165,6 +165,11 @@
                   </ImageView>
                </graphic>
             </Button>
+            <ImageView fitHeight="128.0" fitWidth="139.0" layoutX="1133.0" layoutY="7.0">
+               <image>
+                  <Image url="@Einstellungen.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <ImageView fitHeight="56.0" fitWidth="307.0" layoutX="487.0" layoutY="37.0">

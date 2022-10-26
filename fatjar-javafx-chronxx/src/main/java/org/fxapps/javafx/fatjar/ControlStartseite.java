@@ -34,9 +34,14 @@ public class ControlStartseite implements Initializable {
     private Pane gleitzeit;
     @FXML
     private Pane kalender;
+    @FXML
+    private Pane urlaub;
 
     @FXML
     private Label aktuelleGleitzeit2;
+    @FXML
+    private Label name;
+
 
     @FXML
     private Circle gruen;
@@ -86,6 +91,13 @@ public class ControlStartseite implements Initializable {
            
         }
         
+        
+       // name.setText("Hallo");
+        
+        
+        
+       name.setText(Person.vorname + " " + Person.nachname);
+        
        
       
     }
@@ -94,6 +106,8 @@ public class ControlStartseite implements Initializable {
     void abmeldenM(MouseEvent event) {
     	
         try {
+        	Person.vorname = null;
+        	Person.nachname = null;
         	Person.email=null;
 			Person.passwort=null;
 			EinlesenUndSpeichern.bereitseingelesen=false;
@@ -162,6 +176,23 @@ public class ControlStartseite implements Initializable {
     void kalenderHervorClick(MouseEvent event) {kalender.setStyle("-fx-background-color: #696969");}
     @FXML
     void kalenderHintenClick(MouseEvent event) {kalender.setStyle("-fx-background-color: grey");}
+    
+    @FXML
+    void urlaubClick(MouseEvent event) throws IOException {
+    	
+    	Parent root2 = FXMLLoader.load(getClass().getResource("/org/fxapps/javafx/fatjar/Urlaub.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root2);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    @FXML
+    void urlaubHervorClick(MouseEvent event) {urlaub.setStyle("-fx-background-color: #696969");}
+    @FXML
+    void urlaubHintenClick(MouseEvent event) {urlaub.setStyle("-fx-background-color: grey");}
+
 
 
 }
