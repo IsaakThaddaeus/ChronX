@@ -130,7 +130,7 @@
                         <Font name="Calibri" size="31.0" />
                      </font>
                   </Label>
-                  <AnchorPane layoutX="4.0" layoutY="81.0" prefHeight="162.0" prefWidth="600.0" style="-fx-background-color: #545454; -fx-background-radius: 10;" />
+                  <AnchorPane layoutX="14.0" layoutY="182.0" prefHeight="162.0" prefWidth="600.0" style="-fx-background-color: #545454; -fx-background-radius: 10;" />
                </children>
             </AnchorPane>
          </children>

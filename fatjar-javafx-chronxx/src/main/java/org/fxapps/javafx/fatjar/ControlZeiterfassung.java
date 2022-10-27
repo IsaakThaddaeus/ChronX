@@ -100,6 +100,7 @@ public class ControlZeiterfassung implements Initializable {
 	
 	boolean kg = false;
 	String uhrzeitKommen;
+	double gesamtZeit = 0;
 
 	/*
 	 * (non-Javadoc)
@@ -113,7 +114,7 @@ public class ControlZeiterfassung implements Initializable {
 		gegangen.setCellValueFactory(new PropertyValueFactory<Eintrag, String>("gegangen"));
 		stunden.setCellValueFactory(new PropertyValueFactory<Eintrag, Double>("stunden"));
 
-		aktuelleGleitzeit.setText("+ " + Double.toString(Person.gleitzeit));
+		aktuelleGleitzeit.setText(Double.toString(Person.gleitzeit));
 
 		if (ControlStartseite.ampel == 1) {
 
@@ -152,24 +153,8 @@ public class ControlZeiterfassung implements Initializable {
 			
 		}
 		
-		List <LocalDateTime> listeAktuellerTag = Person.getZeitRechner().eintraegeFuerBeliebigenTagAufrufen(LocalDate.now(), Person.getAktuellEingeloggterArbeiter());
+		ladeTabelle(Person.getZeitRechner().eintraegeFuerBeliebigenTagAufrufen(LocalDate.now(), Person.getAktuellEingeloggterArbeiter()));
 		
-		double gesamtZeit2 = 0;
-		
-		for (int i = 0; i < listeAktuellerTag.size(); i = i + 2) {
-			
-			String zk = Person.getZeitRechner().zeitFuerTabellenAufbereiter(listeAktuellerTag.get(i));
-			String zg = Person.getZeitRechner().zeitFuerTabellenAufbereiter(listeAktuellerTag.get(i + 1));
-			
-			Eintrag eintrag4 = new Eintrag(zk, zg, 0.0);
-			double stundenD = eintrag4.getStunden();
-			ObservableList<Eintrag> customers = tabelle.getItems();
-			customers.add(eintrag4);
-			tabelle.setItems(customers);
-			gesamtZeit2 = gesamtZeit2 + eintrag4.stunden;
-		}
-		
-		tagesstunden.setText(gesamtZeit2+"");
 		
 	}
 
@@ -206,10 +191,15 @@ public class ControlZeiterfassung implements Initializable {
 
 			start.setText("Zeiterfassung starten");
 			start.setStyle("-fx-background-color:  #dbba51");
-			stundenL.setText(Double.toString(stundenD));
+			stundenL.setText(stundenD+"");
+			
+			gesamtZeit = gesamtZeit + stundenD;
+			tagesstunden.setText(gesamtZeit+"");
 			
 			Person.getZeitRechner().zeiteintragFuerAktuellenTagHinzufuegen(Person.getAktuellEingeloggterArbeiter());
 			EinlesenUndSpeichern.abspeichernVonAenderungen(Person.getAktuellEingeloggterArbeiter());
+			
+			gleitzeitAktualisieren();
 			
 			/*
 			 *  Hinzufügen Jan du Eumel: Zeitverstoß Rückgabe als String
@@ -295,7 +285,7 @@ public class ControlZeiterfassung implements Initializable {
 			LocalDateTime date = LocalDateTime.now();
 			List<LocalDateTime> arrList = new ArrayList<LocalDateTime>();
 
-			 double gesamtStunden = 0;
+			 gesamtZeit = 0;
 			
 			for (int i = 0; i < tabelle.getItems().size(); i++) {
 			  
@@ -310,12 +300,12 @@ public class ControlZeiterfassung implements Initializable {
 				arrList.add(date.withHour(Integer.parseInt(gegangenS[0])).withMinute(Integer.parseInt(gegangenS[1]))
 						.withSecond(0).withNano(0));
 				// arrList.get(i).add(eintrag2.stunden);
-				gesamtStunden = gesamtStunden + einzelStunden;
+				gesamtZeit = gesamtZeit + einzelStunden;
 			}
 			 System.out.println(arrList);
-		      System.out.println(gesamtStunden);
+		      System.out.println(gesamtZeit);
 		      
-		      tagesstunden.setText(gesamtStunden+"");
+		      tagesstunden.setText(gesamtZeit+"");
 		      
 	
 			
@@ -323,6 +313,8 @@ public class ControlZeiterfassung implements Initializable {
 			System.out.println("ER GEHT HIER HIN");
 
 			zr.gegebeneZeitenAnpasser(arrList, Person.getAktuellEingeloggterArbeiter());
+			
+			gleitzeitAktualisieren();
 			
 			/*
 			 *  Hinzufügen Jan du Eumel: Zeitverstoß Rückgabe als String
@@ -371,21 +363,56 @@ public class ControlZeiterfassung implements Initializable {
 		//Person.hdatum = datum;
 		System.out.println("aktueller Tag " + datum);
 		
-		 List<LocalDateTime> a = Person.getZeitRechner().eintraegeFuerBeliebigenTagAufrufen(datum, Person.getAktuellEingeloggterArbeiter());
+		 ladeTabelle(Person.getZeitRechner().eintraegeFuerBeliebigenTagAufrufen(datum, Person.getAktuellEingeloggterArbeiter()));
+		 
 		
-		System.out.println(a);
-		 
-	
-		 
-			for (int i = 0; i < a.size(); i++) {
-			 
-			 System.out.println("Liste aktueller Tag" + a.get(i));
-			 
-			 
-			 	
-		 }
 
 	}
+	
+	public void ladeTabelle(List<LocalDateTime> l) {
+			
+			tabelle.getItems().clear();
+		
+			gesamtZeit = 0;
+			System.out.println(l);
+		
+			for (int i = 0; i < l.size(); i = i + 2) {
+				
+			try {
+			
+			String zk = Person.getZeitRechner().zeitFuerTabellenAufbereiter(l.get(i));
+			String zg = Person.getZeitRechner().zeitFuerTabellenAufbereiter(l.get(i + 1));
+			
+			Eintrag eintrag4 = new Eintrag(zk, zg, 0.0);
+			double stundenD = eintrag4.getStunden();
+			ObservableList<Eintrag> customers = tabelle.getItems();
+			customers.add(eintrag4);
+			tabelle.setItems(customers);
+			gesamtZeit = gesamtZeit + eintrag4.stunden;
+			
+			}
+			catch (IndexOutOfBoundsException e) {
+				System.out.println("Hier wurde die Schleife abgebrochen");
+				break;
+				
+			}
+		}
+		
+		gleitzeitAktualisieren();
+		
+		tagesstunden.setText(gesamtZeit+"");
+		
+		}
+	
+	public void gleitzeitAktualisieren () {
+		Person.gleitzeit = Math.round(Person.getZeitRechner().gibGleitzeitGesamt(Person.getAktuellEingeloggterArbeiter())* 100.0) / 100.0;
+		aktuelleGleitzeit.setText(Person.gleitzeit+"");
+		
+	}
+		
+		
+			
+	
 	
 
 	@FXML
