@@ -89,7 +89,9 @@ public class ControlAnmeldung {
 				Person.email=bn;
 				Person.passwort=ps;
 				Person.setAktuellEingeloggtenArbeiter();
-				System.out.println("BN: "+Person.email+" PS: "+Person.passwort);
+				Person.geburtstag = Person.getAktuellEingeloggterArbeiter().geburtstag;
+				Person.warngrenze = Person.getAktuellEingeloggterArbeiter().gleitzeitWarngrenze;
+				System.out.println("BN: "+Person.email+" PS: "+Person.passwort + " Warngrenze " + Person.warngrenze);
 				
 				Person.getEinlesenUndSpeichern().nameAusEmailErmittler(Person.getAktuellEingeloggterArbeiter());
 				Person.getZeitRechner().vergangeneTageInDatenBankAnlegen(Person.getAktuellEingeloggterArbeiter());

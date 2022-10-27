@@ -16,7 +16,7 @@ public class Arbeiter {
 	public boolean artDesAngestellten;
 	
 	@JsonProperty
-	LocalDate geburtstag;
+	public LocalDate geburtstag;
 
 	@JsonProperty
 	public boolean sprache;

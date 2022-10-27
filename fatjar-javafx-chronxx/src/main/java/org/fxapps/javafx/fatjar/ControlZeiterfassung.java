@@ -173,19 +173,26 @@ public class ControlZeiterfassung implements Initializable {
 			kommZeit.setText(uhrzeit[1]);
 			uhrzeitKommen = uhrzeit[1];
 			
+			Person.getAktuellEingeloggterArbeiter().aktuelleGleitzeit = Person.gleitzeit;
 			Person.getZeitRechner().zeiteintragFuerAktuellenTagHinzufuegen(Person.getAktuellEingeloggterArbeiter());
 			EinlesenUndSpeichern.abspeichernVonAenderungen(Person.getAktuellEingeloggterArbeiter());
+			
 			
 			} 
 		
 		else {
 			kg = false;
-
+			
 			Eintrag eintrag = new Eintrag(uhrzeitKommen, uhrzeit[1], 0.0);
 			double stundenD = eintrag.getStunden();
+			
+			if (LocalDate.now().isEqual(kalenderPicker2.getValue())) {
+
 			ObservableList<Eintrag> customers = tabelle.getItems();
 			customers.add(eintrag);
 			tabelle.setItems(customers);
+			
+			}
 
 			gehZeit.setText(uhrzeit[1]);
 
@@ -282,7 +289,7 @@ public class ControlZeiterfassung implements Initializable {
 			loeschen.setDisable(true);
 
 			Eintrag eintrag2 = new Eintrag();
-			LocalDateTime date = LocalDateTime.now();
+			LocalDate date = kalenderPicker2.getValue();
 			List<LocalDateTime> arrList = new ArrayList<LocalDateTime>();
 
 			 gesamtZeit = 0;
@@ -295,14 +302,14 @@ public class ControlZeiterfassung implements Initializable {
 				String[] gegangenS = eintrag2.gegangen.split(":");
 
 				// arrList.add(new ArrayList<>());
-				arrList.add(date.withHour(Integer.parseInt(kommenS[0])).withMinute(Integer.parseInt(kommenS[1]))
+				arrList.add(date.atTime(Integer.parseInt(kommenS[0]),Integer.parseInt(kommenS[1]))
 						.withSecond(0).withNano(0));
-				arrList.add(date.withHour(Integer.parseInt(gegangenS[0])).withMinute(Integer.parseInt(gegangenS[1]))
+				arrList.add(date.atTime(Integer.parseInt(gegangenS[0]),Integer.parseInt(gegangenS[1]))
 						.withSecond(0).withNano(0));
 				// arrList.get(i).add(eintrag2.stunden);
 				gesamtZeit = gesamtZeit + einzelStunden;
 			}
-			 System.out.println(arrList);
+			 System.out.println(arrList +" Hallo " + arrList.get(0));
 		      System.out.println(gesamtZeit);
 		      
 		      tagesstunden.setText(gesamtZeit+"");
@@ -397,16 +404,18 @@ public class ControlZeiterfassung implements Initializable {
 				
 			}
 		}
-		
-		gleitzeitAktualisieren();
+			if (l.size()%2 == 0) {gleitzeitAktualisieren();}
 		
 		tagesstunden.setText(gesamtZeit+"");
 		
 		}
 	
 	public void gleitzeitAktualisieren () {
+		
 		Person.gleitzeit = Math.round(Person.getZeitRechner().gibGleitzeitGesamt(Person.getAktuellEingeloggterArbeiter())* 100.0) / 100.0;
 		aktuelleGleitzeit.setText(Person.gleitzeit+"");
+		
+
 		
 	}
 		

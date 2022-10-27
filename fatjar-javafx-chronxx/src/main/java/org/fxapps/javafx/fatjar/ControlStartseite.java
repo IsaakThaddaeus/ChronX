@@ -58,7 +58,13 @@ public class ControlStartseite implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     	
-    	Person.gleitzeit = Math.round(Person.getZeitRechner().gibGleitzeitGesamt(Person.getAktuellEingeloggterArbeiter())* 100.0) / 100.0;       
+    	try {
+    	
+    	Person.gleitzeit = Math.round(Person.getZeitRechner().gibGleitzeitGesamt(Person.getAktuellEingeloggterArbeiter())* 100.0) / 100.0;  
+    	
+    	}
+    	
+    	catch (Exception e) {Person.gleitzeit = Person.getAktuellEingeloggterArbeiter().aktuelleGleitzeit;}
         aktuelleGleitzeit2.setText(Double.toString(Person.gleitzeit));
 
         warngrenzePerson = Person.warngrenze;

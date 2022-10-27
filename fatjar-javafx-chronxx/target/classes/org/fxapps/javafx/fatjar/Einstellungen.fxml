@@ -124,7 +124,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </TextField>
-                              <Label fx:id="passwortAnforderungen" layoutX="218.0" layoutY="369.0" prefHeight="17.0" prefWidth="331.0" text="Passwort entspricht nicht den Anforderungen" textFill="#bf0707" visible="false">
+                              <Label fx:id="passwortAnforderungen" layoutX="218.0" layoutY="281.0" prefHeight="17.0" prefWidth="331.0" text="Passwort entspricht nicht den Anforderungen" textFill="#bf0707" visible="false">
                                  <font>
                                     <Font name="Calibri Italic" size="17.0" />
                                  </font>

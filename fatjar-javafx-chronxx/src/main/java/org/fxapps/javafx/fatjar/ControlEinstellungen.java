@@ -110,6 +110,9 @@ public class ControlEinstellungen implements Initializable {
                 passwort1E.setText(Person.passwort);
                 passwort2E.setText(Person.passwort);
                 
+                DateTimeFormatter formatters  = DateTimeFormatter.ofPattern("dd.MM.uuuu");
+                geburtsdatumE.setText(Person.geburtstag.format(formatters));
+                
 
 
                 
@@ -149,45 +152,52 @@ public class ControlEinstellungen implements Initializable {
         }
 
         else {
-
-            riegel = false;
-
-            aendern.setText("Ändern");
-            aendern.setStyle("-fx-background-color: #4d4d4d");
-            acloeschen.setVisible(false);
-            //aendern.setStyle("-fx-text-fill: #dbba51");
-
-//            nachnameE.setDisable(true);
-//           vornameE.setDisable(true);
-           geburtsdatumE.setDisable(true);
-           emailE.setDisable(true);
-           passwort1E.setDisable(true);
-           passwort2E.setVisible(false);
-
-//           Person.nachname = nachnameE.getText();
-//           Person.vorname = vornameE.getText();
-
-           Person.geburtstag = LocalDate.parse(geburtsdatumE.getText(), formatter);
-
-           System.out.println(Person.geburtstag);
-           
-           Person.email = emailE.getText();
-
-           if (passwort1E.getText().length() < 8 || passwort1E.getText().matches("[a-zA-Z]*")) {passwortAnforderungen.setVisible(true);}
-           else {
-            
-            passwortAnforderungen.setVisible(false);
-            Person.passwort = passwort2E.getText();
-
-            } 
-
+        	
+        	if (passwort1E.getText().length() < 8 || passwort1E.getText().matches("[a-zA-Z]*")) {passwortAnforderungen.setVisible(true);}
+            else {
+             
+	             passwortAnforderungen.setVisible(false);
+	             Person.passwort = passwort2E.getText();
+	             Person.getAktuellEingeloggterArbeiter().passwort = Person.passwort;
+	
+	             
+	
+	            riegel = false;
+	
+	            aendern.setText("Ändern");
+	            aendern.setStyle("-fx-background-color: #4d4d4d");
+	            acloeschen.setVisible(false);
+	           
+	           geburtsdatumE.setDisable(true);
+	           emailE.setDisable(true);
+	           passwort1E.setDisable(true);
+	           passwort2E.setVisible(false);
+	
+	           Person.geburtstag = LocalDate.parse(geburtsdatumE.getText(), formatter);
+	           Person.getAktuellEingeloggterArbeiter().geburtstag = Person.geburtstag;
+	
+	           System.out.println(Person.geburtstag + " Hallo " + Person.getAktuellEingeloggterArbeiter().geburtstag);
+	           
+	           Person.email = emailE.getText();
+	           Person.getAktuellEingeloggterArbeiter().email = Person.email;
+	           
+	           EinlesenUndSpeichern.abspeichernVonAenderungen(Person.getAktuellEingeloggterArbeiter());
+	
+	        }
+        	
         }
 
 
     }
 
     @FXML
-    void sliderAmpelClick(MouseEvent event) {Person.warngrenze = Math.floor(sliderAmpel.getValue());}
+    void sliderAmpelClick(MouseEvent event) {
+    	Person.warngrenze = Math.floor(sliderAmpel.getValue());
+    	Person.getAktuellEingeloggterArbeiter().gleitzeitWarngrenze = Person.warngrenze;
+    	EinlesenUndSpeichern.abspeichernVonAenderungen(Person.getAktuellEingeloggterArbeiter());
+    	
+    	System.out.println("Warngrenze nach Änderung " + Person.warngrenze);
+    }
 
     @FXML
     void zurueckPHervorClick(MouseEvent event) {zurueckP.setStyle("-fx-background-color: #696969");}
