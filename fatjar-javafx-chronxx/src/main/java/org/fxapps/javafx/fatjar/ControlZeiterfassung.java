@@ -377,11 +377,15 @@ public class ControlZeiterfassung implements Initializable {
 	}
 	
 	public void ladeTabelle(List<LocalDateTime> l) {
+		
+			System.out.println("Jetzt geht er in ladeTabelle");
 			
 			tabelle.getItems().clear();
 		
 			gesamtZeit = 0;
-			System.out.println(l);
+			System.out.println("Das ist die ArrayList: " + l);
+			
+			try {
 		
 			for (int i = 0; i < l.size(); i = i + 2) {
 				
@@ -404,9 +408,16 @@ public class ControlZeiterfassung implements Initializable {
 				
 			}
 		}
+			
+			System.out.println("Hier befinden wir uns außerhalb der Schleife");
 			if (l.size()%2 == 0) {gleitzeitAktualisieren();}
 		
-		tagesstunden.setText(gesamtZeit+"");
+			tagesstunden.setText(gesamtZeit+"");
+			}
+			
+			catch (Exception e) {System.out.println("Die Schleife wurde nicht einmal ausgeführt");}
+			
+			
 		
 		}
 	
