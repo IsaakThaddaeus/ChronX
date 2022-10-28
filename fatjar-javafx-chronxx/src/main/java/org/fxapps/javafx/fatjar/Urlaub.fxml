@@ -35,8 +35,8 @@
                         <Font name="Calibri" size="30.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="startdatum" layoutX="170.0" layoutY="66.0" stylesheets="@StyleDatePicker.css" />
-                  <DatePicker fx:id="endedatum" layoutX="528.0" layoutY="66.0" stylesheets="@StyleDatePicker.css" />
+                  <DatePicker fx:id="startdatum" layoutX="170.0" layoutY="66.0" onAction="#startdatumClick" stylesheets="@StyleDatePicker.css" />
+                  <DatePicker fx:id="endedatum" layoutX="528.0" layoutY="66.0" onAction="#endedatumClick" stylesheets="@StyleDatePicker.css" />
                   <Label layoutX="69.0" layoutY="64.0" text="Start:" textFill="#2c2c2c">
                      <font>
                         <Font name="Calibri" size="30.0" />
@@ -47,7 +47,7 @@
                         <Font name="Calibri" size="30.0" />
                      </font>
                   </Label>
-                  <Button fx:id="hinzufuegen" layoutX="790.0" layoutY="64.0" mnemonicParsing="false" onAction="#hinzufuegenClick" onMouseEntered="#hinzufuegenHervorClick" onMouseExited="#hinzufuegenHintenClick" prefHeight="36.0" prefWidth="121.0" style="-fx-background-color: #dbba51;" text="Hinzufügen">
+                  <Button fx:id="hinzufuegen" disable="true" layoutX="790.0" layoutY="64.0" mnemonicParsing="false" onAction="#hinzufuegenClick" onMouseEntered="#hinzufuegenHervorClick" onMouseExited="#hinzufuegenHintenClick" prefHeight="36.0" prefWidth="121.0" style="-fx-background-color: #dbba51;" text="Hinzufügen">
                      <font>
                         <Font name="Calibri" size="18.0" />
                      </font>
@@ -87,7 +87,7 @@
                         <Font name="Calibri" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="loeschen" layoutX="538.0" layoutY="73.0" mnemonicParsing="false" onAction="#loeschenClick" onMouseEntered="#loeschenHervorClick" onMouseExited="#loeschenHintenClick" prefHeight="28.0" prefWidth="131.0" style="-fx-background-color: #c32828;" text="Eintrag löschen">
+                  <Button fx:id="loeschen" disable="true" layoutX="538.0" layoutY="73.0" mnemonicParsing="false" onAction="#loeschenClick" onMouseEntered="#loeschenHervorClick" onMouseExited="#loeschenHintenClick" prefHeight="28.0" prefWidth="131.0" style="-fx-background-color: #c32828;" text="Eintrag löschen" visible="false">
                      <font>
                         <Font name="Calibri" size="16.0" />
                      </font>

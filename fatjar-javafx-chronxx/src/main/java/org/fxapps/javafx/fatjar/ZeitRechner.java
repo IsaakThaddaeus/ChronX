@@ -282,12 +282,11 @@ public class ZeitRechner {
 		return gleitzeit;
 	}
 
-	public double gibGleitzeitJahr(Arbeiter mitarbeiter , LocalDate ld) {
+	public double gibGleitzeitJahr(Arbeiter mitarbeiter) {
 		double gleitzeit = 0;
-		
-		
+
 		for (int i = 0; i < mitarbeiter.zeitarbeitsTag.size(); i++) {
-			if (mitarbeiter.zeitarbeitsTag.get(i).get(0).getYear() == ld.getYear()) {
+			if (mitarbeiter.zeitarbeitsTag.get(i).get(0).getYear() == LocalDateTime.now().getYear()) {
 				gleitzeit += rechneZeitarbeitsTag(mitarbeiter.zeitarbeitsTag.get(i), mitarbeiter)
 						- (mitarbeiter.wochenstunden / 6);
 			}
@@ -296,13 +295,13 @@ public class ZeitRechner {
 		return gleitzeit;
 	}
 
-	public double gibGleitzeitQuartal(Arbeiter mitarbeiter, LocalDate ld) {
+	public double gibGleitzeitQuartal(Arbeiter mitarbeiter) {
 		double gleitzeit = 0;
 
 		for (int i = 0; i < mitarbeiter.zeitarbeitsTag.size(); i++) {
-			if (mitarbeiter.zeitarbeitsTag.get(i).get(0).getYear() == ld.getYear()
-					&& mitarbeiter.zeitarbeitsTag.get(i).get(0).get(IsoFields.QUARTER_OF_YEAR) == 
-							ld.get(IsoFields.QUARTER_OF_YEAR)) {
+			if (mitarbeiter.zeitarbeitsTag.get(i).get(0).getYear() == LocalDateTime.now().getYear()
+					&& mitarbeiter.zeitarbeitsTag.get(i).get(0).get(IsoFields.QUARTER_OF_YEAR) == LocalDateTime.now()
+							.get(IsoFields.QUARTER_OF_YEAR)) {
 				gleitzeit += rechneZeitarbeitsTag(mitarbeiter.zeitarbeitsTag.get(i), mitarbeiter)
 						- (mitarbeiter.wochenstunden / 6);
 			}
@@ -310,19 +309,18 @@ public class ZeitRechner {
 		return gleitzeit;
 	}
 
-	public double gibGleitzeitMonat(Arbeiter mitarbeiter, LocalDate ld) {
+	public double gibGleitzeitMonat(Arbeiter mitarbeiter) {
 		double gleitzeit = 0;
 
 		for (int i = 0; i < mitarbeiter.zeitarbeitsTag.size(); i++) {
-			if (mitarbeiter.zeitarbeitsTag.get(i).get(0).getYear() == ld.getYear()
-					&& mitarbeiter.zeitarbeitsTag.get(i).get(0).getMonth() == ld.getMonth()) {
+			if (mitarbeiter.zeitarbeitsTag.get(i).get(0).getYear() == LocalDateTime.now().getYear()
+					&& mitarbeiter.zeitarbeitsTag.get(i).get(0).getMonth() == LocalDateTime.now().getMonth()) {
 				gleitzeit += rechneZeitarbeitsTag(mitarbeiter.zeitarbeitsTag.get(i), mitarbeiter)
 						- (mitarbeiter.wochenstunden / 6);
 			}
 		}
 		return gleitzeit;
 	}
-	
 
 	private double rechneZeitarbeitsTag(List<LocalDateTime> zeitarbeitstag, Arbeiter mitarbeiter) {
 		double zeitProTag = 0;
@@ -346,12 +344,6 @@ public class ZeitRechner {
 		}
 
 		return zeitProTag;
-	}
-	
-	
-	public LocalDateTime gibErsterTag(Arbeiter mitarbeiter)
-	{
-		return mitarbeiter.zeitarbeitsTag.get(0).get(0);
 	}
 
 }

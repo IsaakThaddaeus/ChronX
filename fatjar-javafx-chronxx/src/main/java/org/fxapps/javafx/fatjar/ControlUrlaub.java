@@ -5,6 +5,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -46,69 +47,88 @@ public class ControlUrlaub implements Initializable {
     private DatePicker startdatum;
     
     @FXML
-    private TableView<UrlaubTabelle> urlaub;
+    private TableView<UrlaubEintrag> urlaub;
     @FXML
-    private TableColumn<UrlaubTabelle, String> start;
+    private TableColumn<UrlaubEintrag, String> start;
     @FXML
-    private TableColumn<UrlaubTabelle, String> ende;
+    private TableColumn<UrlaubEintrag, String> ende;
     @FXML
-    private TableColumn<UrlaubTabelle, Integer> tage;
+    private TableColumn<UrlaubEintrag, Integer> tage;
     
     private Stage stage;
 	private Scene scene;
     
     @Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
-    	start.setCellValueFactory(new PropertyValueFactory<UrlaubTabelle, String>("start"));
-    	ende.setCellValueFactory(new PropertyValueFactory<UrlaubTabelle, String>("ende"));
-    	tage.setCellValueFactory(new PropertyValueFactory<UrlaubTabelle, Integer>("tage"));
+    	start.setCellValueFactory(new PropertyValueFactory<UrlaubEintrag, String>("start"));
+    	ende.setCellValueFactory(new PropertyValueFactory<UrlaubEintrag, String>("ende"));
+    	tage.setCellValueFactory(new PropertyValueFactory<UrlaubEintrag, Integer>("tage"));
     	
     	List <LocalDate> abwesenheitstage = Person.getAktuellEingeloggterArbeiter().urlaubsUndKrankheitsTage;
-    	ladeTabelle(abwesenheitstage);
     	
-    }
-    
-    public void ladeTabelle(List<LocalDate> l) {
-		
-		urlaub.getItems().clear();
-		System.out.println(l);
-	
-		for (int i = 0; i < l.size(); i = i + 2) {
+
+		System.out.println("Jetzt geht er in ladeTabelle und ich überprüfe");
 			
-		try {
+			//urlaub.getItems().clear();
 		
-			DateTimeFormatter formatters  = DateTimeFormatter.ofPattern("dd.MM.uuuu");
-	    	
-	    	String starttagS = l.get(i).format(formatters);
-	    	String endetagS = l.get(i+1).format(formatters);
+			System.out.println("Das ist die ArrayList: " + abwesenheitstage);
+			
+			try {
 		
-		UrlaubTabelle urlaub3 = new UrlaubTabelle(starttagS, endetagS, 0);
-		//double stundenD = urlaub3.getStunden();
-		ObservableList<UrlaubTabelle> customers = urlaub.getItems();
-		customers.add(urlaub3);
-		urlaub.setItems(customers);
-		
+			for (int i = 0; i < abwesenheitstage.size(); i = i + 2) {
+				
+			try {
+				tabelleneintrag(abwesenheitstage.get(i), abwesenheitstage.get(i+1));
+			}
+			catch (IndexOutOfBoundsException e) {
+				System.out.println("Hier wurde die Schleife abgebrochen");
+				break;
+				
+			}
+		}
+		}
+			
+			// System.out.println("Hier befinden wir uns außerhalb der Schleife");
+			// if (abwesenheitstage.size()%2 == 0) {gleitzeitAktualisieren();
+			
+			
+			catch (Exception e) {System.out.println("Die Schleife wurde nicht einmal ausgeführt");}
 		
 		}
-		catch (IndexOutOfBoundsException e) {
-			System.out.println("Hier wurde die Schleife abgebrochen");
-			break;
-			
-		}
-	}
-    }
     boolean ba = false;
 
     @FXML
     void bearbeiten2Click(ActionEvent event) {
     	
-    	if (ba == false) {
-    		
+    	if (ba == false) {   		
     		ba = true;
-    		editableCols();
-    		
-    		
+			
+			bearbeiten2.setStyle("-fx-background-color: #545454");
+			bearbeiten2.setText("Fertig");
+			
+			loeschen.setVisible(true);
+
+			urlaub.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+				if (newSelection != null) {
+					loeschen.setDisable(false);
+				}
+			});
+
+    		editableCols();	
     	}
+
+		else {
+			ba = false;
+
+			bearbeiten2.setStyle("-fx-background-color:  #dbba51");
+			bearbeiten2.setText("Bearbeiten");
+			
+			loeschen.setVisible(false);
+			loeschen.setVisible(true);
+
+			urlaub.setEditable(false);
+
+		}
 
     }
 
@@ -118,7 +138,7 @@ public class ControlUrlaub implements Initializable {
 		if (ba == false) {
 			bearbeiten2.setStyle("-fx-background-color: #a18634");
 		} else {
-			bearbeiten2.setStyle("-fx-background-color: #696969");
+			bearbeiten2.setStyle("-fx-background-color: #4d4d4d");
 		}
 	}
 
@@ -127,7 +147,7 @@ public class ControlUrlaub implements Initializable {
 		if (ba == false) {
 			bearbeiten2.setStyle("-fx-background-color: #dbba51");
 		} else {
-			bearbeiten2.setStyle("-fx-background-color: grey");
+			bearbeiten2.setStyle("-fx-background-color: #545454");
 		}
 
 	}
@@ -144,25 +164,79 @@ public class ControlUrlaub implements Initializable {
 		urlaub.setEditable(true);
 	}
 
+	boolean datumueberpruefer1 = false;
+	boolean datumueberpruefer2 = false;
+	@FXML
+    void startdatumClick(ActionEvent event) {
+
+		if (startdatum.getValue() != null) {datumueberpruefer1 = true;}
+		if (datumueberpruefer1 == true && datumueberpruefer2 == true) {hinzufuegen.setDisable(false);}
+	}
+
+	@FXML
+    void endedatumClick(ActionEvent event) {
+
+		if (endedatum.getValue() != null) {datumueberpruefer2 = true;}
+		if (datumueberpruefer1 == true && datumueberpruefer2 == true) {hinzufuegen.setDisable(false);}
+	}
+
+
     @FXML
     void hinzufuegenClick(ActionEvent event) {
     	
     	LocalDate starttag = startdatum.getValue();
     	LocalDate endetag = endedatum.getValue();
     	
-    	DateTimeFormatter formatters  = DateTimeFormatter.ofPattern("dd.MM.uuuu");
-    	
-    	String starttagS = starttag.format(formatters);
-    	String endetagS = endetag.format(formatters);
-    	
-    	UrlaubTabelle neuerurlaub = new UrlaubTabelle(starttagS, endetagS, 0);
-    	UrlaubTabelle.getTage();
-		ObservableList<UrlaubTabelle> customers = urlaub.getItems();
-		customers.add(neuerurlaub);
-		urlaub.setItems(customers);
+		tabelleneintrag(starttag, endetag);
     	
 
     }
+
+	public void tabelleneintrag (LocalDate ts, LocalDate te) {
+		
+		DateTimeFormatter formatters  = DateTimeFormatter.ofPattern("dd.MM.uuuu");
+    	
+    	String starttagS = ts.format(formatters);
+    	String endetagS = te.format(formatters);
+    	
+    	UrlaubEintrag neuerurlaub = new UrlaubEintrag(starttagS, endetagS, 1);
+    	int useless = neuerurlaub.getTage();
+		
+		ObservableList<UrlaubEintrag> customers = urlaub.getItems();
+
+		System.out.println("Customers vorher " + customers);
+		customers.add(neuerurlaub);
+		System.out.println("Customers nachher " + customers);
+		urlaub.setItems(customers);
+
+	}
+
+	public void tabelleSpeichern (List <LocalDate> l) {
+		
+			UrlaubEintrag neuerurlaub2 = new UrlaubEintrag();
+			//LocalDate date = kalenderPicker2.getValue();
+			List<LocalDate> arrList = new ArrayList<LocalDate>();
+			
+			for (int i = 0; i < urlaub.getItems().size(); i++) {
+			  
+				neuerurlaub2 = urlaub.getItems().get(i);
+
+				LocalDate starttag = LocalDate.parse(neuerurlaub2.start);
+				LocalDate endetag = LocalDate.parse(neuerurlaub2.ende);
+				// double einzelStunden = neuerurlaub2.getStunden();
+				// String[] kommenS = eintrag2.kommen.split(":");
+				// String[] gegangenS = eintrag2.gegangen.split(":");
+				
+					//arrList.add(new ArrayList<>());
+					arrList.add(starttag);
+					arrList.add(endetag);
+					// arrList.get(i).add(eintrag2.stunden);	
+				
+			}
+			 System.out.println(arrList +" Hallo " + arrList.get(0));
+
+			 //Person.getZeitRechner().aufUrlaubsKrankheitsliste(arrList, Person.getAktuellEingeloggterArbeiter());
+	}
 
     @FXML
     void hinzufuegenHervorClick(MouseEvent event) {hinzufuegen.setStyle("-fx-background-color: #a18634");}
@@ -171,7 +245,7 @@ public class ControlUrlaub implements Initializable {
 
     @FXML
     void loeschenClick(ActionEvent event) {
-
+		urlaub.getItems().removeAll(urlaub.getSelectionModel().getSelectedItems());
     }
 
     @FXML

@@ -66,13 +66,13 @@ public class ControlZeiterfassung implements Initializable {
 	public Label aktuelleGleitzeit;
 
 	@FXML
-	private TableView<Eintrag> tabelle;
+	private TableView<ZeiterfassungEintrag> tabelle;
 	@FXML
-	private TableColumn<Eintrag, String> gegangen;
+	private TableColumn<ZeiterfassungEintrag, String> gegangen;
 	@FXML
-	private TableColumn<Eintrag, String> kommen;
+	private TableColumn<ZeiterfassungEintrag, String> kommen;
 	@FXML
-	private TableColumn<Eintrag, Double> stunden;
+	private TableColumn<ZeiterfassungEintrag, Double> stunden;
 
 	@FXML
 	public DatePicker kalenderPicker2;
@@ -110,9 +110,9 @@ public class ControlZeiterfassung implements Initializable {
 	 */
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
-		kommen.setCellValueFactory(new PropertyValueFactory<Eintrag, String>("kommen"));
-		gegangen.setCellValueFactory(new PropertyValueFactory<Eintrag, String>("gegangen"));
-		stunden.setCellValueFactory(new PropertyValueFactory<Eintrag, Double>("stunden"));
+		kommen.setCellValueFactory(new PropertyValueFactory<ZeiterfassungEintrag, String>("kommen"));
+		gegangen.setCellValueFactory(new PropertyValueFactory<ZeiterfassungEintrag, String>("gegangen"));
+		stunden.setCellValueFactory(new PropertyValueFactory<ZeiterfassungEintrag, Double>("stunden"));
 
 		aktuelleGleitzeit.setText(Double.toString(Person.gleitzeit));
 
@@ -183,12 +183,12 @@ public class ControlZeiterfassung implements Initializable {
 		else {
 			kg = false;
 			
-			Eintrag eintrag = new Eintrag(uhrzeitKommen, uhrzeit[1], 0.0);
+			ZeiterfassungEintrag eintrag = new ZeiterfassungEintrag(uhrzeitKommen, uhrzeit[1], 0.0);
 			double stundenD = eintrag.getStunden();
 			
 			if (LocalDate.now().isEqual(kalenderPicker2.getValue())) {
 
-			ObservableList<Eintrag> customers = tabelle.getItems();
+			ObservableList<ZeiterfassungEintrag> customers = tabelle.getItems();
 			customers.add(eintrag);
 			tabelle.setItems(customers);
 			
@@ -288,7 +288,7 @@ public class ControlZeiterfassung implements Initializable {
 			loeschen.setVisible(false);
 			loeschen.setDisable(true);
 
-			Eintrag eintrag2 = new Eintrag();
+			ZeiterfassungEintrag eintrag2 = new ZeiterfassungEintrag();
 			LocalDate date = kalenderPicker2.getValue();
 			List<LocalDateTime> arrList = new ArrayList<LocalDateTime>();
 
@@ -378,7 +378,7 @@ public class ControlZeiterfassung implements Initializable {
 	
 	public void ladeTabelle(List<LocalDateTime> l) {
 		
-			System.out.println("Jetzt geht er in ladeTabelle");
+			System.out.println("Jetzt geht er in ladeTabelle und ich überprüfe");
 			
 			tabelle.getItems().clear();
 		
@@ -394,11 +394,12 @@ public class ControlZeiterfassung implements Initializable {
 			String zk = Person.getZeitRechner().zeitFuerTabellenAufbereiter(l.get(i));
 			String zg = Person.getZeitRechner().zeitFuerTabellenAufbereiter(l.get(i + 1));
 			
-			Eintrag eintrag4 = new Eintrag(zk, zg, 0.0);
+			ZeiterfassungEintrag eintrag4 = new ZeiterfassungEintrag(zk, zg, 0.0);
 			double stundenD = eintrag4.getStunden();
-			ObservableList<Eintrag> customers = tabelle.getItems();
+			ObservableList<ZeiterfassungEintrag> customers = tabelle.getItems();
 			customers.add(eintrag4);
 			tabelle.setItems(customers);
+			
 			gesamtZeit = gesamtZeit + eintrag4.stunden;
 			
 			}
@@ -430,17 +431,12 @@ public class ControlZeiterfassung implements Initializable {
 		
 	}
 		
-		
-			
-	
-	
-
 	@FXML
 	void hinzufuegenClick(ActionEvent event) {
 
-		Eintrag eintrag3 = new Eintrag("00:00", "00:00", 0.0);
+		ZeiterfassungEintrag eintrag3 = new ZeiterfassungEintrag("00:00", "00:00", 0.0);
 		double stundenD = eintrag3.getStunden();
-		ObservableList<Eintrag> customers = tabelle.getItems();
+		ObservableList<ZeiterfassungEintrag> customers = tabelle.getItems();
 		customers.add(eintrag3);
 		tabelle.setItems(customers);
 
