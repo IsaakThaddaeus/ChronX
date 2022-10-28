@@ -110,6 +110,14 @@ public class ZeitRechner {
 		}
 		return arbeiter;
 	}
+	
+	 public void urlaubsKrankheitsListeHizufuegen(List<LocalDate> listeDerEintraege, Arbeiter arbeiter) {
+		 System.out.println("Methode: urlaubsKrankheits Hinzufüger");
+	        arbeiter.urlaubsUndKrankheitsTage.clear();
+	        arbeiter.urlaubsUndKrankheitsTage.addAll(listeDerEintraege);
+	        EinlesenUndSpeichern.abspeichernVonAenderungen(arbeiter);
+	        
+	}
 
 	public boolean aufUrlaubsKrankheitsliste(LocalDate zuTestenderTag, Arbeiter arbeiter) {
 		// Iteriert ueber die gegebene Urlaubs- bzw Krankheitsliste im Json.
