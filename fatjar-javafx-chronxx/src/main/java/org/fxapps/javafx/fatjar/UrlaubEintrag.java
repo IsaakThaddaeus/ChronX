@@ -47,24 +47,20 @@ public class UrlaubEintrag {
     
     public int getTage() {
     	
-//    	DateTimeFormatter formatters  = DateTimeFormatter.ofPattern("dd.MM.uuuu");
-//    	
-//    	LocalDateTime startL = LocalDateTime.parse(start, formatters);
-//    	LocalDateTime endeL = LocalDateTime.parse(ende, formatters);
+    	DateTimeFormatter formatters  = DateTimeFormatter.ofPattern("dd.MM.uuuu");
     	
-    	//System.out.println("Das hier ist der Starttag: " + startL);
-    	
-    	//long daysBetween = ChronoUnit.DAYS.between(startL, endeL);
-    	
-    	//System.out.println("Das hier sind die Urlaubstage mit long: " + daysBetween);
-    	
-//    	Period period = Period.between(startL, endeL);
-//        int days = period.getDays();
-//         
-//         this.tage = days;
-       //  System.out.println("Das sind die Urlaubstage: " + tage);
-         tage = 5;
-         return tage;
+ 	     LocalDate startL = LocalDate.parse(start, formatters);
+ 	     LocalDate endeL = LocalDate.parse(ende, formatters);
+
+       long noOfDaysBetween = ChronoUnit.DAYS.between(startL, endeL);
+
+       System.out.println("Das sind die Tage dazwischen" + noOfDaysBetween);
+
+       int tagedazwischen=(int)noOfDaysBetween;  
+
+        this.tage = tagedazwischen;
+         System.out.println("Das sind die Urlaubstage: " + tage);
+        return tage;
          
         
     	

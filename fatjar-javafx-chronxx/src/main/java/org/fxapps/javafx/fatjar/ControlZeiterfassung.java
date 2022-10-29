@@ -301,16 +301,16 @@ public class ControlZeiterfassung implements Initializable {
 				String[] kommenS = eintrag2.kommen.split(":");
 				String[] gegangenS = eintrag2.gegangen.split(":");
 
-				// arrList.add(new ArrayList<>());
+				
 				arrList.add(date.atTime(Integer.parseInt(kommenS[0]),Integer.parseInt(kommenS[1]))
 						.withSecond(0).withNano(0));
 				arrList.add(date.atTime(Integer.parseInt(gegangenS[0]),Integer.parseInt(gegangenS[1]))
 						.withSecond(0).withNano(0));
-				// arrList.get(i).add(eintrag2.stunden);
+				
 				gesamtZeit = gesamtZeit + einzelStunden;
 			}
 			 System.out.println(arrList +" Hallo " + arrList.get(0));
-		      System.out.println(gesamtZeit);
+		     // System.out.println(gesamtZeit);
 		      
 		      tagesstunden.setText(gesamtZeit+"");
 		      
