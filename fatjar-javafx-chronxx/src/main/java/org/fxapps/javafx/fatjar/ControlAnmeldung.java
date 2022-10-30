@@ -94,7 +94,11 @@ public class ControlAnmeldung {
 				System.out.println("BN: "+Person.email+" PS: "+Person.passwort + " Warngrenze " + Person.warngrenze);
 				
 				Person.getEinlesenUndSpeichern().nameAusEmailErmittler(Person.getAktuellEingeloggterArbeiter());
+				
+				try {
 				Person.getZeitRechner().vergangeneTageInDatenBankAnlegen(Person.getAktuellEingeloggterArbeiter());
+				}
+				catch (Exception e) {System.out.println("Die Methode hat nicht funktioniert");}
 				
 				sts1(event);
 				
