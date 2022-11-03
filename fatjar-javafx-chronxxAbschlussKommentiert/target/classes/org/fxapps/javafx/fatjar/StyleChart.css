@@ -1,0 +1,19 @@
+.chart {
+    -fx-padding: 10px;
+  
+}
+
+.chart-series-line {    
+    -fx-background-color: #dbba51;  
+}
+
+.default-color0.chart-bar { -fx-bar-fill:#dbba51;}
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+/* .chart-horizontal-grid-lines {
+    -fx-stroke: #000000;
+
+} */

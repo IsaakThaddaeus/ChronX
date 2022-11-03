@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fxapps.javafx.fatjar.ControlUrlaub">
+   <children>
+    <AnchorPane layoutY="126.0" minHeight="0.0" minWidth="0.0" prefHeight="674.0" prefWidth="1280.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="126.0">
+         <children>
+            <ImageView fitHeight="77.0" fitWidth="66.0" layoutX="1200.0" layoutY="14.0">
+               <image>
+                  <Image url="@Urlaub.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="zurueckU" layoutX="11.0" layoutY="17.0" mnemonicParsing="false" onAction="#zurueckUClick" onMouseEntered="#zurueckUHervorClick" onMouseExited="#zurueckUHintenClick" style="-fx-background-color: grey;">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@zurueck.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <AnchorPane layoutX="168.0" layoutY="17.0" prefHeight="149.0" prefWidth="944.0" style="-fx-background-color: grey; -fx-background-radius: 10;">
+               <children>
+                  <Label fx:id="labelUrlaubAbwesenheitH" alignment="CENTER" layoutX="171.0" layoutY="14.0" prefHeight="35.0" prefWidth="614.0" text="Urlaub / Abwesenheit hinzufügen" textFill="#dbba51">
+                     <font>
+                        <Font name="Calibri" size="30.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="startdatum" layoutX="170.0" layoutY="66.0" onAction="#startdatumClick" stylesheets="@StyleDatePicker.css" />
+                  <DatePicker fx:id="endedatum" layoutX="528.0" layoutY="66.0" onAction="#endedatumClick" stylesheets="@StyleDatePicker.css" />
+                  <Label layoutX="69.0" layoutY="64.0" text="Start:" textFill="#2c2c2c">
+                     <font>
+                        <Font name="Calibri" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelEnde" layoutX="443.0" layoutY="64.0" text="Ende:" textFill="#2c2c2c">
+                     <font>
+                        <Font name="Calibri" size="30.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="hinzufuegen" disable="true" layoutX="790.0" layoutY="64.0" mnemonicParsing="false" onAction="#hinzufuegenClick" onMouseEntered="#hinzufuegenHervorClick" onMouseExited="#hinzufuegenHintenClick" prefHeight="36.0" prefWidth="121.0" style="-fx-background-color: #dbba51;" text="Hinzufügen">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="datumLiegtInVergangenheit" alignment="CENTER" layoutX="225.0" layoutY="117.0" prefHeight="18.0" prefWidth="495.0" text="Eintrag nicht möglich. Mindestens ein Datum liegt in der Vergangenheit" textFill="#b51717" visible="false">
+                     <font>
+                        <Font name="Calibri Italic" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="167.0" layoutY="178.0" prefHeight="488.0" prefWidth="944.0" style="-fx-background-color: grey; -fx-background-radius: 10;">
+               <children>
+                  <TableView fx:id="urlaub" layoutX="10.0" layoutY="107.0" prefHeight="368.0" prefWidth="924.0" stylesheets="@styleTable.css">
+                    <columns>
+                      <TableColumn fx:id="start" prefWidth="423.0" style="-fx-font-size: 16; -fx-border-color: black;" text="Start Urlaub / Abwesenheit" />
+                      <TableColumn fx:id="ende" prefWidth="401.0" style="-fx-font-size: 16; -fx-border-color: black;" text="Ende Urlaub / Abwesenheit" />
+                        <TableColumn fx:id="tage" prefWidth="96.0" style="-fx-font-size: 16; -fx-border-color: black;" text="Tage" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="bearbeiten2" layoutX="809.0" layoutY="64.0" mnemonicParsing="false" onAction="#bearbeiten2Click" onMouseEntered="#bearbeiten2HervorClick" onMouseExited="#bearbeiten2HintenClick" prefHeight="36.0" prefWidth="121.0" style="-fx-background-color: #dbba51;" text="Bearbeiten">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="loeschen" disable="true" layoutX="670.0" layoutY="72.0" mnemonicParsing="false" onAction="#loeschenClick" onMouseEntered="#loeschenHervorClick" onMouseExited="#loeschenHintenClick" prefHeight="28.0" prefWidth="131.0" style="-fx-background-color: #c32828;" text="Eintrag löschen">
+                     <font>
+                        <Font name="Calibri" size="16.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="labelEintraegeBearbeiten" alignment="CENTER" layoutX="210.0" layoutY="14.0" prefHeight="35.0" prefWidth="525.0" text="Einträge bearbeiten" textFill="#dbba51">
+                     <font>
+                        <Font name="Calibri" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelGebuchteTage" alignment="TOP_RIGHT" layoutX="14.0" layoutY="64.0" prefHeight="35.0" prefWidth="197.0" text="Gebuchte Tage:" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="abwesenheitstagegesamt" layoutX="211.0" layoutY="65.0" prefHeight="35.0" prefWidth="197.0" textFill="WHITE">
+                     <font>
+                        <Font name="Calibri" size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="56.0" fitWidth="317.0" layoutX="482.0" layoutY="41.0">
+         <image>
+            <Image url="@ChronX.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

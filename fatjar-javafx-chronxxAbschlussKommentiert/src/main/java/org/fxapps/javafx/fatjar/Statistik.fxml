@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.fxapps.javafx.fatjar.ControlStatistik">
+   <children>
+    <AnchorPane layoutY="126.0" minHeight="0.0" minWidth="0.0" prefHeight="674.0" prefWidth="1280.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="126.0">
+         <children>
+            <Button fx:id="zurueckS" layoutX="11.0" layoutY="17.0" mnemonicParsing="false" onAction="#zurueckSClick" onMouseEntered="#zurueckSHervorClick" onMouseExited="#zurueckSHintenClick" style="-fx-background-color: grey;">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@zurueck.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <AnchorPane fx:id="uebersicht1" layoutX="11.0" layoutY="65.0" prefHeight="595.0" prefWidth="618.0" style="-fx-background-color: grey; -fx-background-radius: 10;">
+               <children>
+                  <ImageView layoutX="540.0" layoutY="-8.0">
+                     <image>
+                        <Image url="@Kalender.png" />
+                     </image>
+                  </ImageView>
+                  <GridPane alignment="CENTER" layoutX="14.0" layoutY="99.0" prefHeight="340.0" prefWidth="600.0" style="-fx-font-size: 16;">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="70.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="70.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="70.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="70.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="70.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="70.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label fx:id="labelMontag" alignment="CENTER" contentDisplay="CENTER" text="Montag">
+                           <font>
+                              <Font name="Calibri Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelDienstag" alignment="CENTER" contentDisplay="CENTER" text="Dienstag" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="Calibri Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelMittwoch" alignment="CENTER" contentDisplay="CENTER" text="Mittwoch" GridPane.columnIndex="2">
+                           <font>
+                              <Font name="Calibri Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelDonnerstag" alignment="CENTER" contentDisplay="CENTER" text="Donnerstag" GridPane.columnIndex="3">
+                           <font>
+                              <Font name="Calibri Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelFreitag" alignment="CENTER" contentDisplay="CENTER" text="Freitag" GridPane.columnIndex="4">
+                           <font>
+                              <Font name="Calibri Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelSamstag" alignment="CENTER" contentDisplay="CENTER" text="Samstag" GridPane.columnIndex="5">
+                           <font>
+                              <Font name="Calibri Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelSonntag" alignment="CENTER" contentDisplay="CENTER" text="Sonntag" GridPane.columnIndex="6">
+                           <font>
+                              <Font name="Calibri Bold" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag01" alignment="CENTER" contentDisplay="CENTER" prefHeight="93.0" prefWidth="111.0" style="-fx-background-radius: 10;" text="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag11" alignment="CENTER" contentDisplay="CENTER" prefHeight="171.0" prefWidth="205.0" style="-fx-background-radius: 10;" text="2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag21" alignment="CENTER" contentDisplay="CENTER" prefHeight="136.0" prefWidth="180.0" style="-fx-background-radius: 10;" text="3" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag31" alignment="CENTER" contentDisplay="CENTER" prefHeight="139.0" prefWidth="200.0" style="-fx-background-radius: 10;" text="4" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag41" alignment="CENTER" contentDisplay="CENTER" prefHeight="158.0" prefWidth="200.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag51" alignment="CENTER" contentDisplay="CENTER" prefHeight="125.0" prefWidth="197.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag61" alignment="CENTER" contentDisplay="CENTER" prefHeight="170.0" prefWidth="192.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag02" alignment="CENTER" contentDisplay="CENTER" prefHeight="148.0" prefWidth="160.0" style="-fx-background-radius: 10;" text="5" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag12" alignment="CENTER" contentDisplay="CENTER" prefHeight="150.0" prefWidth="199.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag22" alignment="CENTER" contentDisplay="CENTER" prefHeight="144.0" prefWidth="210.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag32" alignment="CENTER" contentDisplay="CENTER" prefHeight="128.0" prefWidth="239.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag42" alignment="CENTER" contentDisplay="CENTER" prefHeight="143.0" prefWidth="208.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag52" alignment="CENTER" contentDisplay="CENTER" prefHeight="119.0" prefWidth="174.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag62" alignment="CENTER" contentDisplay="CENTER" prefHeight="173.0" prefWidth="207.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag03" alignment="CENTER" contentDisplay="CENTER" prefHeight="161.0" prefWidth="222.0" style="-fx-background-radius: 10;" text="5" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag13" alignment="CENTER" contentDisplay="CENTER" prefHeight="160.0" prefWidth="158.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag23" alignment="CENTER" contentDisplay="CENTER" prefHeight="184.0" prefWidth="185.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag33" alignment="CENTER" contentDisplay="CENTER" prefHeight="126.0" prefWidth="170.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag43" alignment="CENTER" contentDisplay="CENTER" prefHeight="149.0" prefWidth="181.0" style="-fx-background-radius: 10;" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag53" alignment="CENTER" contentDisplay="CENTER" prefHeight="138.0" prefWidth="167.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag63" alignment="CENTER" contentDisplay="CENTER" prefHeight="128.0" prefWidth="134.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="6" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag04" alignment="CENTER" contentDisplay="CENTER" prefHeight="149.0" prefWidth="181.0" style="-fx-background-radius: 10;" text="5" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag14" alignment="CENTER" contentDisplay="CENTER" prefHeight="136.0" prefWidth="135.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag24" alignment="CENTER" contentDisplay="CENTER" prefHeight="125.0" prefWidth="152.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag34" alignment="CENTER" contentDisplay="CENTER" prefHeight="135.0" prefWidth="175.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag44" alignment="CENTER" contentDisplay="CENTER" prefHeight="127.0" prefWidth="182.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag54" alignment="CENTER" contentDisplay="CENTER" prefHeight="178.0" prefWidth="277.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="5" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag64" alignment="CENTER" contentDisplay="CENTER" prefHeight="157.0" prefWidth="180.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="6" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag05" alignment="CENTER" contentDisplay="CENTER" prefHeight="152.0" prefWidth="198.0" style="-fx-background-radius: 10;" text="5" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag15" alignment="CENTER" contentDisplay="CENTER" prefHeight="137.0" prefWidth="165.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag25" alignment="CENTER" contentDisplay="CENTER" prefHeight="138.0" prefWidth="206.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag35" alignment="CENTER" contentDisplay="CENTER" prefHeight="209.0" prefWidth="383.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag45" alignment="CENTER" contentDisplay="CENTER" prefHeight="144.0" prefWidth="187.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="4" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag55" alignment="CENTER" contentDisplay="CENTER" prefHeight="129.0" prefWidth="146.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="5" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag65" alignment="CENTER" contentDisplay="CENTER" prefHeight="145.0" prefWidth="160.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="6" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag06" alignment="CENTER" contentDisplay="CENTER" prefHeight="121.0" prefWidth="165.0" style="-fx-background-radius: 10;" text="5" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag16" alignment="CENTER" contentDisplay="CENTER" prefHeight="100.0" prefWidth="121.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag26" alignment="CENTER" contentDisplay="CENTER" prefHeight="123.0" prefWidth="134.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag36" alignment="CENTER" contentDisplay="CENTER" prefHeight="134.0" prefWidth="192.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag46" alignment="CENTER" contentDisplay="CENTER" prefHeight="128.0" prefWidth="158.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="4" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag56" alignment="CENTER" contentDisplay="CENTER" prefHeight="130.0" prefWidth="141.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="5" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tag66" alignment="CENTER" contentDisplay="CENTER" prefHeight="129.0" prefWidth="152.0" style="-fx-background-radius: 10;" text="5" GridPane.columnIndex="6" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Calibri" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+                  <Label fx:id="labelKalender" alignment="CENTER" layoutX="214.0" layoutY="7.0" prefHeight="45.0" prefWidth="200.0" text="Kalender">
+                     <font>
+                        <Font name="Calibri" size="39.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="monat" layoutX="25.0" layoutY="58.0" prefHeight="46.0" prefWidth="265.0" text="Oktober" textFill="#dbba51">
+                     <font>
+                        <Font name="Calibri" size="40.0" />
+                     </font>
+                  </Label>
+                  <AnchorPane layoutX="318.0" layoutY="84.0" prefHeight="21.0" prefWidth="21.0" style="-fx-background-color: #0c9ec6;" />
+                  <Label fx:id="labelUrlaubAbwesenheit" alignment="CENTER" layoutX="339.0" layoutY="84.0" prefHeight="21.0" prefWidth="167.0" text="Urlaub/ Abwesenheit">
+                     <font>
+                        <Font name="Calibri" size="17.0" />
+                     </font>
+                  </Label>
+                  <AnchorPane layoutX="519.0" layoutY="84.0" prefHeight="21.0" prefWidth="21.0" style="-fx-background-color: #dbba51;" />
+                  <Label fx:id="labelHeute" alignment="CENTER" layoutX="540.0" layoutY="84.0" prefHeight="21.0" prefWidth="60.0" text="Heute">
+                     <font>
+                        <Font name="Calibri" size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="uebersicht11" layoutX="656.0" layoutY="65.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="618.0" style="-fx-background-color: grey; -fx-background-radius: 10;">
+               <children>
+                  <ImageView layoutX="522.0" layoutY="-7.0">
+                     <image>
+                        <Image url="@Satistik.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="labelStatistik" alignment="CENTER" layoutX="178.0" prefHeight="45.0" prefWidth="265.0" text="Statistik">
+                     <font>
+                        <Font name="Calibri" size="39.0" />
+                     </font>
+                  </Label>
+                  <MenuButton fx:id="auswahlJahre" layoutX="110.0" layoutY="89.0" mnemonicParsing="false" style="-fx-background-color: black;" stylesheets="@styleMenuButton.css" text="20" textFill="WHITE" />
+                  <Label fx:id="labelJahr" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="86.0" prefHeight="21.0" prefWidth="96.0" text="Jahr:">
+                     <font>
+                        <Font name="Calibri" size="27.0" />
+                     </font>
+                  </Label>
+                  <MenuButton fx:id="auswahlqm" layoutX="522.0" layoutY="89.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: black;" stylesheets="@styleMenuButton.css" text="Monate" textFill="WHITE">
+                     <items>
+                        <MenuItem fx:id="monate" mnemonicParsing="false" onAction="#monateClick" text="Monate" />
+                        <MenuItem fx:id="quartale" mnemonicParsing="false" onAction="#quartaleClick" text="Quartale" />
+                        <MenuItem fx:id="jahr" mnemonicParsing="false" onAction="#jahrClick" text="Jahre" />
+                     </items>
+                  </MenuButton>
+                  <AnchorPane fx:id="aPaneMonat" layoutX="9.0" layoutY="114.0" prefHeight="470.0" prefWidth="600.0" visible="false">
+                     <children>
+                        <BarChart fx:id="barchart" horizontalGridLinesVisible="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="600.0" stylesheets="@StyleChart.css" verticalGridLinesVisible="false">
+                          <xAxis>
+                            <CategoryAxis fx:id="X" side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis fx:id="Y" autoRanging="false" lowerBound="-100.0" side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="aPaneQuartal" layoutX="10.0" layoutY="120.0" prefHeight="470.0" prefWidth="600.0" visible="false">
+                     <children>
+                        <Label fx:id="labelQuartalAnzeige" alignment="TOP_LEFT" layoutX="54.0" layoutY="362.0" prefHeight="104.0" prefWidth="526.0" text="               Quartal 1                        Quartal 2                          Quartal 3                        Quartal 4" />
+                        <BarChart fx:id="barchartQ" horizontalGridLinesVisible="false" layoutX="14.0" prefHeight="428.0" prefWidth="579.0" stylesheets="@StyleChart.css" verticalGridLinesVisible="false">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" fx:id="xquartal" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis fx:id="YQ" autoRanging="false" lowerBound="-100.0" side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="aPaneJahr" layoutX="10.0" layoutY="120.0" prefHeight="470.0" prefWidth="600.0">
+                     <children>
+                        <BarChart fx:id="barchartJahr" horizontalGridLinesVisible="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="600.0" stylesheets="@StyleChart.css" verticalGridLinesVisible="false">
+                           <xAxis>
+                              <CategoryAxis fx:id="XJahr" side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis fx:id="YJahr" lowerBound="-100.0" side="LEFT" />
+                           </yAxis>
+                        </BarChart>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="56.0" fitWidth="317.0" layoutX="482.0" layoutY="41.0">
+         <image>
+            <Image url="@ChronX.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
